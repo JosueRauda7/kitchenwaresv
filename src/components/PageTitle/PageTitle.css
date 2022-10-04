@@ -1,20 +1,12 @@
-.Head{
+.PageTitle {
   padding: 20px 30px;
   padding-bottom: 0;
 }
 
-.Head h1{
+.PageTitle h1 {
   background-image: linear-gradient(to right, #003DD4, #29ABE2);
   background-clip: text;
   -webkit-background-clip: text;
   color: transparent;
   font-size: 3rem;
-}
-
-.itemContainer{
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: stretch;
-  justify-content: center;
 }

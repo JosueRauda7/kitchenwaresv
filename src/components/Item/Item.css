@@ -1,0 +1,40 @@
+.Item {
+  width: 20%;
+  margin: 20px;
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  border-radius: 10px;
+  padding: 15px;
+  box-shadow: 0 0 5px 1px rgba(0,0,0,0.3);
+}
+
+.Item .Image{
+  text-align: center;
+}
+
+.Item .Image, .Item .Header, .Item .Footer{
+  margin: 5px 0;
+}
+
+.Item .Image img{
+  height: auto;
+  max-width: 100%;
+  border-radius: 10px;
+}
+
+.Item .Footer .Buttons{
+  display: flex;
+  justify-content: space-around;
+}
+
+.Item .Footer .Buttons {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.Precio {
+  text-align: right;
+  font-size: 1.2rem;
+}

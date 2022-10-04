@@ -10,6 +10,8 @@ const Menu = (props) => {
         <li className='Link'>Inicio</li>
         <li className='Link'>Tienda</li>
         <li className='Link'>Contáctanos</li>
+        <li className='Link'>Login</li>
+        <li className='Link'>Regístrate</li>
       </ul>
     </div>
   );

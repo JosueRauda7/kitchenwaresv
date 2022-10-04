@@ -1,0 +1,63 @@
+.Container {
+  display: flex;
+  height: 88vh;
+  overflow: hidden;
+}
+
+.Container .LoginImage{
+  display: block;
+  width: 50%;
+}
+
+.Container .LoginImage .TextoResaltar {
+  z-index: 999;
+  position: absolute;
+  left: 0;
+  top: 12vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 50%;
+  height: 88vh;
+  padding-top: 40vh;
+  text-align: center;
+}
+
+.Container .LoginImage .TextoResaltar img {
+  padding: 20px;
+  width: 80%;
+}
+
+.Container .LoginImage .TextoResaltar h1{
+  color: white;
+  padding: 50px;
+  /* font-size: 5rem; */
+}
+
+.Container .LoginImage img{
+  z-index: -1;
+  width: 100%;
+  margin-top: -26vh;
+  /* clip-path: polygon(0 0, 0 50%, 50% 50%, 100% 0); */
+}
+
+.Container .LoginForm, .Container .RegistroForm {
+  width: 50%;
+  text-align: center;
+  display: flex;
+  flex-flow: column;
+}
+
+.Container .LoginForm{
+  padding: 12vh 10%;
+}
+
+.Container .RegistroForm{
+  padding: 0 10%;
+}
+
+.Container .LoginForm .Buttons, .Container .RegistroForm .Buttons{
+  display: flex;
+}
+
+.Container .LoginForm > *, .Container .RegistroForm > *{
+  margin: 10px 0;
+}

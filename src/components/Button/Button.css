@@ -1,0 +1,49 @@
+.Button{
+  border-radius: 5px;
+  padding: 8px 8px;
+  width: 100%;
+  margin: 5px;
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.Button p{
+  color: #eee;
+  font-weight: bolder;
+  text-align: center;
+}
+
+.Button:hover{
+  cursor: pointer;
+}
+
+.primary{
+  background-color: #29ABE2;
+}
+
+.primary:hover{
+  background-color: #0984e3;
+}
+
+.primary:active{
+  background-color: #0652DD;
+}
+
+.add {
+  background-color: #4cd137;
+}
+
+.add:hover{
+  background-color: #44bd32;
+}
+
+.add:active {
+  background-color: #009432;
+}
+
+.info p{
+  color: #0652DD;
+  text-decoration: underline;
+}

@@ -2,14 +2,18 @@ import Item from "../../components/Item/Item";
 import ItemImg from "../../assets/ItemExample.jpeg";
 import ItemImg2 from "../../assets/ItemExample2.jpeg";
 import ItemImg3 from "../../assets/ItemExample3.jpeg";
-import "./LandingPage.css";
+import "./Tienda.css";
+import { useState } from "react";
+import PageTitle from "../../components/PageTitle/PageTitle";
 
-const LandingPage = (props) => {
+const Tienda = (props) => {
+  const [isShowModal, setShowModal] = useState(false);
+
+  const handleModal = (descripcion) => {};
+
   return (
     <div>
-      <div className='Head'>
-        <h1>Productos</h1>
-      </div>
+      <PageTitle>Productos</PageTitle>
       <div className='itemContainer'>
         <Item
           img={ItemImg}
@@ -33,4 +37,4 @@ const LandingPage = (props) => {
   );
 };
 
-export default LandingPage;
+export default Tienda;
