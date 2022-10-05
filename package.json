@@ -2,7 +2,7 @@
   "name": "kitchenware",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://josuerauda7.github.io/kitchenwaresv/build",
+  "homepage": "https://josuerauda7.github.io/kitchenwaresv",
   "dependencies": {
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.4.0",
@@ -19,7 +19,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -b master -d build"
   },
   "eslintConfig": {
     "extends": [
