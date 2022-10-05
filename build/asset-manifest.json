@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/static/css/main.7558b5de.css",
+    "main.js": "/static/js/main.5ae9df44.js",
+    "static/js/787.e05d5881.chunk.js": "/static/js/787.e05d5881.chunk.js",
+    "static/media/loginimage.jpg": "/static/media/loginimage.88af47047ca48b2a37ef.jpg",
+    "static/media/logo_positivo.png": "/static/media/logo_positivo.3acc145538a723a2ce2d.png",
+    "static/media/ItemExample2.jpeg": "/static/media/ItemExample2.7c184ee47c14ff902f03.jpeg",
+    "static/media/ItemExample.jpeg": "/static/media/ItemExample.b1b9bb3ea0afed1ac36f.jpeg",
+    "static/media/ItemExample3.jpeg": "/static/media/ItemExample3.783b4fe20aae631ab5c9.jpeg",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.7558b5de.css.map": "/static/css/main.7558b5de.css.map",
+    "main.5ae9df44.js.map": "/static/js/main.5ae9df44.js.map",
+    "787.e05d5881.chunk.js.map": "/static/js/787.e05d5881.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7558b5de.css",
+    "static/js/main.5ae9df44.js"
+  ]
+}
