@@ -17,7 +17,7 @@ const Item = (props) => {
           mayor cantidad de tiempo sin perder su calidad y sabor.
         </p>
       </div> */}
-      <div className='Footer'>
+      <div className='FooterItem'>
         <div className='Buttons'>
           <Button type='info'>Ver mas detalles...</Button>
           <Button type='primary'>Comprar</Button>

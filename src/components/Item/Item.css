@@ -23,12 +23,12 @@
   border-radius: 10px;
 }
 
-.Item .Footer .Buttons{
+.Item .FooterItem .Buttons{
   display: flex;
   justify-content: space-around;
 }
 
-.Item .Footer .Buttons {
+.Item .FooterItem .Buttons {
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;

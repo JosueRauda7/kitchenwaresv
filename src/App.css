@@ -11,6 +11,22 @@
   color: aliceblue;
 }
 
+::-webkit-scrollbar{
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2297E0;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #1c80bf;
+}
+
 body{
   font-family: 'Raleway', sans-serif;
 }

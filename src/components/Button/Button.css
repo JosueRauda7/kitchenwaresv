@@ -2,6 +2,7 @@
   border-radius: 5px;
   padding: 8px 8px;
   width: 100%;
+  height: auto;
   margin: 5px;
   display: flex;
   flex-flow: column;
@@ -46,4 +47,19 @@
 .info p{
   color: #0652DD;
   text-decoration: underline;
+}
+
+.big{
+  font-size: 1.4rem;
+  background-color: #0652DD;
+  /* border: 2px solid #1764f2; */
+  box-shadow: 0 0 2px 2px white;
+}
+
+.big:hover{
+  background-color: #3074f2;
+}
+
+.big:active {
+  background-color: #0a48ba;
 }

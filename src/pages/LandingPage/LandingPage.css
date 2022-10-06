@@ -1,20 +1,137 @@
-.Head{
-  padding: 20px 30px;
-  padding-bottom: 0;
+.LandingPage {
+  height: 88vh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  perspective: 2px;
+  width: 100%;
+  padding: 20px 40px;
+  padding: 0;
+  margin: 0;
 }
 
-.Head h1{
-  background-image: linear-gradient(to right, #003DD4, #29ABE2);
-  background-clip: text;
-  -webkit-background-clip: text;
-  color: transparent;
+.LandingPage section{
+  transform-style: preserve-3d;
+  position: relative;
+  height: 88vh;
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* flex-flow: column; */
+  /* border-radius: 9px; */
+  width: 100%;
+}
+
+.LandingPage section h1{
   font-size: 3rem;
 }
 
-.itemContainer{
+.Portada {
+  display: flex;
+  flex-flow: column;
+  justify-content: space-between;
+  /* overflow: hidden; */
+}
+
+.Portada::after {
+  background: url(../../assets/portadalanding.jpg);
+  background-size: cover;
+  /* background-repeat: no-repeat; */
+}
+
+.ContentPortada{
+  background: linear-gradient(to right,rgba(99,147,255,0.9),rgba(99, 147, 255, 0));
+  width: 50%;
+  height: 88vh;
+  padding: 50px 35px;
+  display: flex;
+  flex-flow: column;
+}
+
+.ContentPortada > *{
+  margin: 15px 0;
+}
+
+.ContentPortada h1, .ContentPortada h2{
+  color: #fff;
+}
+
+.PortadaButton{
+  justify-items: center;
+  width: 40%;
+  height: 70px;
+  display: flex;
+}
+
+.Parallax{
+  width: 60%;
+}
+
+.Productos{
+  width: 80%;
+  overflow: hidden;
+  margin-bottom: 20px;
+  background-color: #fff;
+}
+
+.Productos .ProductosHeader{
+  padding: 20px 45px;
+}
+
+.Productos .CatalogoContainer{
   width: 100%;
   display: flex;
-  flex-wrap: wrap;
+  flex: 3;
+  /* flex-wrap: wrap; */
   align-items: stretch;
-  justify-content: center;
+  /* justify-content: center; */
+  overflow-x: scroll;
+  height: 70vh;
+  margin-top: 20px;
+  margin: auto;
+  padding: 0 25px;
+}
+
+.Parallax::after{
+  content: "";
+  position: absolute;
+  top:0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  transform: translateZ(-1px) scale(1.5);
+  background-size: 100%;
+  z-index: -1;
+}
+
+.NoParallax{
+  z-index: 999;
+}
+
+.Marcas {
+  height: 88vh;
+  background-color: #fff;
+}
+
+.MarcasHeader h1, .MarcasHeader h3{
+  color: #fff;
+}
+
+.MarcasHeader{
+  height: 32vh;
+  padding: 5% 12%;
+  background-color: #2297E0;
+  /* box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.3); */
+}
+
+.MarcasBody{
+  width: 100%;
+  height: 56vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center
+}
+
+.MarcasBody img{
+  margin: auto;
+  width: 40%;
 }

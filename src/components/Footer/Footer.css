@@ -1,0 +1,66 @@
+.Footer{
+  display: flex;
+  height: 40vh;
+  background-color: #06005E;
+  color: #fff;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.LogoEsloganFooter{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.LogoFooter{
+  height: 15vh;
+  margin: 8px 0;
+}
+
+.EsloganFooter{
+  color: aliceblue;
+}
+
+.RedesSociales h2{
+  margin: 5px 0;
+}
+
+.SocialMedia{
+  display: flex;
+  justify-content:flex-start;
+  background-color: #4d84eb;
+  padding: 5px 10px;
+  border-radius: 5px;
+  margin: 4px 0;
+  cursor: pointer;
+}
+
+.SocialMedia img{
+  width: 25px;
+  margin-right: 10px;
+  background-color: #fff;
+  padding: 2px;
+  border-radius: 5px;
+}
+
+.Contactanos, .EsloganFooter, .RedesSociales{
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+}
+
+.Contactanos h3{
+  text-align: center;
+}
+
+.Form{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.ButtonSubscribe{
+  width: 30%;
+}
