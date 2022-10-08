@@ -2,7 +2,7 @@
   "name": "kitchenware",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://josuerauda7.github.io/",
+  "homepage": "https://josuerauda7.github.io/kitchenware",
   "dependencies": {
     "@emotion/react": "^11.10.4",
     "@emotion/styled": "^11.10.4",
@@ -13,6 +13,7 @@
     "@testing-library/user-event": "^13.5.0",
     "dotenv": "^16.0.3",
     "express": "^4.18.1",
+    "gh-pages": "^4.0.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-helmet": "^6.1.0",
@@ -22,13 +23,10 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "node index.js",
-    "start:dev": "react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -b master -d build"
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": [
