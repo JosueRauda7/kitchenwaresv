@@ -1,0 +1,37 @@
+.Dashboard {
+  height: 88vh;
+  width: 25%;
+  background-color: #17529f;
+  /* background-image: linear-gradient(to top right, #003DD4, #29ABE2); */
+  /* background: linear-gradient(to right top,#003DD4, #2297E0, #2297E0, #003DD4); */
+  position: sticky;
+  left: 0px;
+  top: 12vh;
+  padding: 0 15px;
+  color: #fff;
+  overflow-y: auto;
+}
+
+.Dashboard h1{
+  color: white;
+  margin-bottom: 10px;
+}
+
+.Dashboard > *{
+  margin: 20px 0;
+}
+
+.Dashboard .InputContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.Dashboard .InputContainer > * {
+  margin: 5px 5px;
+}
+
+.dollar{
+  font-weight: bolder;
+  font-size: 1.5rem;
+}

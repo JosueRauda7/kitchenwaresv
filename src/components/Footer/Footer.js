@@ -7,6 +7,7 @@ import InstagramLogo from "../../assets/instagram.png";
 import FacebookLogo from "../../assets/facebook.png";
 import TikTokLogo from "../../assets/tik-tok.png";
 import WhatsappLogo from "../../assets/whatsapp.png";
+import { Link } from "react-router-dom";
 
 const Footer = (props) => {
   return (
@@ -17,27 +18,33 @@ const Footer = (props) => {
       </div>
       <div className='RedesSociales'>
         <h2>Redes Sociales</h2>
-        <div className='SocialMedia'>
+        <a
+          href='https://www.instagram.com/kitchenwaresv/'
+          className='LinkButton SocialMedia'>
           <img src={InstagramLogo} />
           <h3>@kitchenwaresv</h3>
-        </div>
-        <div className='SocialMedia'>
+        </a>
+        <a
+          href='https://www.facebook.com/profile.php?id=100086324293798'
+          className='LinkButton SocialMedia'>
           <img src={FacebookLogo} />
           <h3>kitchenwaresv</h3>
-        </div>
-        <div className='SocialMedia'>
+        </a>
+        <a href='https://wa.me/50379896771' className='LinkButton SocialMedia'>
           <img src={WhatsappLogo} />
           <h3>7989-6771</h3>
-        </div>
-        <div className='SocialMedia'>
+        </a>
+        <a
+          href='https://www.tiktok.com/@kitchenwaresv'
+          className='LinkButton SocialMedia'>
           <img src={TikTokLogo} />
           <h3>@kitchenwaresv</h3>
-        </div>
+        </a>
       </div>
       <div className='Contactanos'>
-        <h3>¡Entérate de nuevos productos!</h3>
+        <h2>¡Entérate de nuevos productos!</h2>
         <form className='Form'>
-          <InputText type='email' />
+          <InputText type='email' placeholder='Email' />
           <div className='ButtonSubscribe'>
             <Button type='primary'>Suscribirme</Button>
           </div>

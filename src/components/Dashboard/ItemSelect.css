@@ -1,0 +1,16 @@
+.ItemSelect{
+  background-color: #0d3c83;
+  padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 9px;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.ItemSelect:hover {
+  background-color: #04337b;
+}
+
+.ItemSelect p{
+  font-weight: 500;
+}

@@ -30,3 +30,10 @@
 body{
   font-family: 'Raleway', sans-serif;
 }
+
+.LinkButton, .LinkButton *{
+  color: white;
+  text-decoration: none;
+  height: inherit;
+  width: inherit;
+}

@@ -1,16 +1,30 @@
 .Menu {
-  background-image: linear-gradient(to right,#003DD4,#29ABE2, #003DD4, #003DD4, #29ABE2, #003DD4);
+  background-image: linear-gradient(to right,#003DD4,#29ABE2, #003DD4, #003DD4, #003DD4, #29ABE2);
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
   padding: 0 20px;
+  position: fixed;
+  width: 100%;
+  z-index: 999;
+  top: 0;
 }
 
 ul {
   display: flex;
   flex-direction: row;
   align-items: center;
+}
+
+.aLink{
+  color: #fff;
+  text-decoration: none;
+}
+
+.aLink:hover{
+  color: #fff;
+  text-shadow: 0 0 10px #fff;
 }
 
 li{

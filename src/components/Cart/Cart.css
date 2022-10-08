@@ -1,0 +1,23 @@
+.Cart{
+  background-image: linear-gradient(to top right, #003DD4, #29ABE2);
+  width: 80px;
+  height: 70px;
+  z-index: 999;
+  position: fixed;
+  top: 15vh;
+  right: 0;
+  color: #fff;
+  border-radius: 15px 0px 0px 15px;
+}
+
+.CartLink:hover {
+  background-color: #003DD4;
+  border-radius: 15px 0px 0px 15px;
+}
+
+.CartLink{
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

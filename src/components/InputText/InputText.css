@@ -2,9 +2,68 @@
   outline: transparent;
   width: 100%;
   font-size: 1.2rem;
-  padding: 3px 5px;
+  padding: 5px 5px;
   border-radius: 8px;
   border-color: black;
   border-width: 1px;
+}
+
+.InputText .left {
+  text-align: left;
+}
+
+.InputText .right {
+  text-align: right;
+}
+
+.InputText .center {
   text-align: center;
+}
+
+.InputSearch, .InputSelect{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #8f8ad6;
+  border-radius: 9px;
+  padding: 0 5px;
+  color: #fff;
+  background-color: rgb(35, 17, 126, 0.3);
+}
+
+.InputSearch input::placeholder, .InputSelect input::placeholder {
+  color: #fff;
+}
+
+.InputSearch input, .InputSelect select{
+    outline: none;
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 5px 5px;
+    border-radius: 8px;
+    border-color: transparent;
+    border-width: 1px;
+    background-color: transparent;
+    font-weight:lighter;
+    color: inherit;
+  }
+
+.InputSelect {
+  margin-top: 15px;
+  cursor: pointer;
+}
+
+.InputSelect select{
+  height: 8vh;
+  line-height: 2;
+}
+
+.InputSelect select option {
+  cursor: pointer;
+  color: #fff;
+  background-color: rgb(35, 17, 126);
+}
+
+.InputSelect select option:hover {
+  background-color: #003DD4;
 }
