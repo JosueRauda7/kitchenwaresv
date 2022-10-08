@@ -5,27 +5,27 @@ import ItemSelect from "./ItemSelect";
 const Dashboard = (props) => {
   let listaCategorias = [
     {
-      path: "/tienda/tuppers",
+      ruta: "/tienda/tuppers",
       categoria: "Recipientes para alimentos",
     },
     {
-      path: "/tienda/botellas",
+      ruta: "/tienda/botellas",
       categoria: "Botellas",
     },
     {
-      path: "/tienda/cocina",
+      ruta: "/tienda/cocina",
       categoria: "Utensilios de cocina",
     },
     {
-      path: "/tienda/mesa",
+      ruta: "/tienda/mesa",
       categoria: "Utensilios de mesa",
     },
     {
-      path: "/tienda/sartenes",
+      ruta: "/tienda/sartenes",
       categoria: "Ollas y sartenes",
     },
     {
-      path: "/tienda/vajillas",
+      ruta: "/tienda/vajillas",
       categoria: "Vajillas",
     },
   ];
@@ -49,8 +49,10 @@ const Dashboard = (props) => {
       </div>
       <div>
         <h2>Categorias</h2>
-        {listaCategorias.map((cat) => (
-          <ItemSelect path={cat.path}>{cat.categoria}</ItemSelect>
+        {listaCategorias.map((cat, id) => (
+          <ItemSelect key={id} ruta={cat.ruta}>
+            {cat.categoria}
+          </ItemSelect>
         ))}
       </div>
     </div>

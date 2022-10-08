@@ -1,21 +1,32 @@
 {
   "files": {
-    "main.css": "/kitchenwaresv/static/css/main.7558b5de.css",
-    "main.js": "/kitchenwaresv/static/js/main.84ba1a34.js",
-    "static/js/787.e05d5881.chunk.js": "/kitchenwaresv/static/js/787.e05d5881.chunk.js",
-    "static/media/loginimage.jpg": "/kitchenwaresv/static/media/loginimage.88af47047ca48b2a37ef.jpg",
-    "static/media/logo_positivo.png": "/kitchenwaresv/static/media/logo_positivo.3acc145538a723a2ce2d.png",
-    "static/media/ItemExample2.jpeg": "/kitchenwaresv/static/media/ItemExample2.7c184ee47c14ff902f03.jpeg",
-    "static/media/ItemExample.jpeg": "/kitchenwaresv/static/media/ItemExample.b1b9bb3ea0afed1ac36f.jpeg",
-    "static/media/ItemExample3.jpeg": "/kitchenwaresv/static/media/ItemExample3.783b4fe20aae631ab5c9.jpeg",
-    "static/media/logo.svg": "/kitchenwaresv/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
-    "index.html": "/kitchenwaresv/index.html",
-    "main.7558b5de.css.map": "/kitchenwaresv/static/css/main.7558b5de.css.map",
-    "main.84ba1a34.js.map": "/kitchenwaresv/static/js/main.84ba1a34.js.map",
-    "787.e05d5881.chunk.js.map": "/kitchenwaresv/static/js/787.e05d5881.chunk.js.map"
+    "main.css": "/static/css/main.29e137f3.css",
+    "main.js": "/static/js/main.933b9acb.js",
+    "static/js/787.e05d5881.chunk.js": "/static/js/787.e05d5881.chunk.js",
+    "static/media/portadalanding.jpg": "/static/media/portadalanding.cd3e6c14b3096a35f5f3.jpg",
+    "static/media/kitchenaccesories.jpg": "/static/media/kitchenaccesories.0080528b1c542db58e30.jpg",
+    "static/media/tableware.jpg": "/static/media/tableware.cacf09cfb495b50cfa26.jpg",
+    "static/media/logo_positivo.png": "/static/media/logo_positivo.3acc145538a723a2ce2d.png",
+    "static/media/bottle.jpg": "/static/media/bottle.d523442919661b1bc411.jpg",
+    "static/media/plates.jpg": "/static/media/plates.a2c6d295230452cd150d.jpg",
+    "static/media/skillet.jpg": "/static/media/skillet.9d4cb10c9e8d637033e9.jpg",
+    "static/media/loginimage.jpg": "/static/media/loginimage.92a82e7b948b9fcaaf45.jpg",
+    "static/media/tupper.jpg": "/static/media/tupper.1ff511cc7bac29abdd11.jpg",
+    "static/media/ItemExample2.jpeg": "/static/media/ItemExample2.7c184ee47c14ff902f03.jpeg",
+    "static/media/ItemExample.jpeg": "/static/media/ItemExample.b1b9bb3ea0afed1ac36f.jpeg",
+    "static/media/tupperware.png": "/static/media/tupperware.775003d661c4705b05f8.png",
+    "static/media/ItemExample3.jpeg": "/static/media/ItemExample3.783b4fe20aae631ab5c9.jpeg",
+    "static/media/whatsapp.png": "/static/media/whatsapp.965d92ce0d9f486938b6.png",
+    "static/media/instagram.png": "/static/media/instagram.2d5cedd576ca1a740d7c.png",
+    "static/media/tik-tok.png": "/static/media/tik-tok.49b1a7fdabdc892efbab.png",
+    "static/media/logo.svg": "/static/media/logo.6ce24c58023cc2f8fd88fe9d219db6c6.svg",
+    "index.html": "/index.html",
+    "main.29e137f3.css.map": "/static/css/main.29e137f3.css.map",
+    "main.933b9acb.js.map": "/static/js/main.933b9acb.js.map",
+    "787.e05d5881.chunk.js.map": "/static/js/787.e05d5881.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.7558b5de.css",
-    "static/js/main.84ba1a34.js"
+    "static/css/main.29e137f3.css",
+    "static/js/main.933b9acb.js"
   ]
 }

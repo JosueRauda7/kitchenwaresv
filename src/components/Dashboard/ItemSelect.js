@@ -4,7 +4,7 @@ import "./ItemSelect.css";
 const ItemSelect = (props) => {
   return (
     <div className='ItemSelect'>
-      <Link className='LinkButton' path={props.path}>
+      <Link className='LinkButton' to={props.ruta}>
         <p>{props.children}</p>
       </Link>
     </div>
