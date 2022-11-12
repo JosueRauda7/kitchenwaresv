@@ -64,10 +64,21 @@
   margin: 5px 0;
 }
 
-.Container .LoginForm .Buttons, .Container .RegistroForm .Buttons{
-  display: flex;
+.Container .LoginForm .Buttons, .Container .RegistroForm .Buttons .Pregunta{
+  align-items: center;
+  justify-content: center;
+  align-self: center;
 }
 
-.Container .LoginForm > *, .Container .RegistroForm > *:nth-child(n-2){
-  margin: 10px 0;
+.RegistroForm .Buttons{
+  padding-bottom: 20px;
+}
+
+.Container .LoginForm .Buttons, .Container .RegistroForm .Buttons, .RegistroForm .Button{
+  display: flex;
+  margin: 0;
+}
+
+.Container .LoginForm > *, .Container .RegistroForm > *{
+  margin: 8px 0;
 }

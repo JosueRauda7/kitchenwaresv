@@ -21,11 +21,11 @@
 }
 
 .primary{
-  background-color: #29ABE2;
+  background-image: linear-gradient(to top right, #003DD4, #29ABE2);
 }
 
 .primary:hover{
-  background-color: #0984e3;
+  background-color: #003DD4;;
 }
 
 .primary:active{
@@ -42,6 +42,10 @@
 
 .add:active {
   background-color: #009432;
+}
+
+.info {
+  width: auto;
 }
 
 .info p{

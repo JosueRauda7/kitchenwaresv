@@ -1,5 +1,6 @@
 import "./InputText.css";
 import SearchIcon from "@mui/icons-material/Search";
+import ErrorMessageBox from "../ErrorMessageBox/ErrorMessageBox";
 
 const InputText = (props) => {
   let inputText = (
@@ -7,6 +8,8 @@ const InputText = (props) => {
       type={props.type}
       placeholder={props.placeholder}
       className={`Input ${props.justify}`}
+      value={props.value}
+      {...props}
     />
   );
 
@@ -18,6 +21,8 @@ const InputText = (props) => {
           type='text'
           placeholder={props.placeholder}
           className={`${props.justify}`}
+          value={props.value}
+          onChange={props.onChange}
         />
       </div>
     );
@@ -37,7 +42,12 @@ const InputText = (props) => {
     );
   }
 
-  return <div className='InputText'>{inputText}</div>;
+  return (
+    <div className='InputText'>
+      {inputText}{" "}
+      {props.error ? <ErrorMessageBox>{props.error}</ErrorMessageBox> : null}
+    </div>
+  );
 };
 
 export default InputText;

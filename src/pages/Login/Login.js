@@ -1,16 +1,119 @@
+import { useState } from "react";
+import axios from "axios";
 import InputText from "../../components/InputText/InputText";
 import PageTitle from "../../components/PageTitle/PageTitle";
 
 import "./Login.css";
 import Logo from "../../assets/logo_positivo.png";
 import Button from "../../components/Button/Button";
-import { useState } from "react";
+import ErrorMessageBox from "../../components/ErrorMessageBox/ErrorMessageBox";
 
 const Login = (props) => {
-  const [isLogin, setIsLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(true);
+  const [username, setUsername] = useState("");
+  const [email1, setEmail1] = useState("");
+  const [email2, setEmail2] = useState("");
+  const [password, setPassword] = useState("");
+  const [errorUsername, setErrorUsername] = useState(null);
+  const [errorEmail, setErrorEmail] = useState(null);
+  const [errorPassword, setErrorPassword] = useState(null);
+
+  const validarErrores = (error) => {
+    if (error.response.data.errores.errors) {
+      let errores = error.response.data.errores.errors;
+      errores.map((err) => {
+        switch (err.param) {
+          case "username":
+            setErrorUsername(err.msg);
+            break;
+          case "correo":
+            setErrorEmail(err.msg);
+            break;
+          case "password":
+            setErrorPassword(err.msg);
+            break;
+        }
+      });
+    } else {
+      console.log(error);
+    }
+  };
+
+  const resetearErrores = () => {
+    setErrorUsername("");
+    setErrorEmail("");
+    setErrorPassword("");
+  };
 
   const handleShowRegistrar = () => {
-    setIsLogin(!isLogin);
+    setUsername("");
+    setEmail1("");
+    setEmail2("");
+    setPassword("");
+    resetearErrores();
+    setShowLogin(!showLogin);
+  };
+
+  const handleSetUsername = (e) => {
+    setErrorUsername("");
+    setUsername(e.target.value);
+  };
+
+  const handleSetEmail1 = (e) => {
+    setErrorEmail("");
+    setEmail1(e.target.value);
+  };
+
+  const handleSetEmail2 = (e) => {
+    setErrorEmail("");
+    setEmail2(e.target.value);
+  };
+
+  const handleSetPassword = (e) => {
+    setErrorPassword("");
+    setPassword(e.target.value);
+  };
+
+  const handleRegistrar = async () => {
+    resetearErrores();
+    let formValido = true;
+    try {
+      if (email1 !== email2) {
+        formValido = false;
+        setErrorEmail("Los emails no coinciden");
+      }
+      if (formValido) {
+        const usuario = {
+          username,
+          correo: email1,
+          password,
+        };
+
+        const url = "http://localhost:8080/api/auth/register";
+
+        // console.log(username);
+        await axios.post(url, usuario);
+      }
+    } catch (error) {
+      validarErrores(error);
+    }
+  };
+
+  const handleLogin = async () => {
+    resetearErrores();
+    try {
+      const usuario = {
+        username,
+        password,
+      };
+
+      const url = "http://localhost:8080/api/auth/login";
+
+      const res = await axios.post(url, usuario);
+      console.log(res);
+    } catch (error) {
+      validarErrores(error);
+    }
   };
 
   return (
@@ -23,22 +126,40 @@ const Login = (props) => {
               <h1>"Distinción y calidad en tu mesa"</h1>
             </div>
           </div>
-          {isLogin ? (
+          {showLogin ? (
             <form className='LoginForm'>
               <PageTitle>Iniciar Sesión</PageTitle>
               <div className='InputContainer'>
                 <h2>Usuario:</h2>
-                <InputText type='text' justify='center' />
+                <InputText
+                  type='text'
+                  value={username}
+                  onChange={handleSetUsername}
+                  justify='center'
+                />
               </div>
               <div className='InputContainer'>
                 <h2>Contraseña:</h2>
-                <InputText type='password' justify='center' />
+                <InputText
+                  type='password'
+                  justify='center'
+                  value={password}
+                  onChange={handleSetPassword}
+                />
               </div>
-
+              {errorUsername ? (
+                <ErrorMessageBox>Usuario no existe</ErrorMessageBox>
+              ) : null}
+              {errorPassword ? (
+                <ErrorMessageBox>Contraseña incorrecta</ErrorMessageBox>
+              ) : null}
+              <Button onClick={handleLogin} type='primary'>
+                Ingresar
+              </Button>
               <div className='Buttons'>
-                <Button type='primary'>Ingresar</Button>
-                <Button onClick={handleShowRegistrar} type='add'>
-                  Registrarse
+                <p className='Pregunta'>¿No tienes una cuenta?</p>
+                <Button onClick={handleShowRegistrar} type='info'>
+                  Registrate
                 </Button>
               </div>
             </form>
@@ -47,24 +168,51 @@ const Login = (props) => {
               <PageTitle>Registrarse</PageTitle>
               <div className='InputContainer'>
                 <h2>Usuario:</h2>
-                <InputText type='text' justify='center' />
+                <InputText
+                  type='text'
+                  justify='center'
+                  value={username}
+                  onChange={handleSetUsername}
+                  error={errorUsername}
+                />
               </div>
               <div className='InputContainer'>
                 <h2>Email:</h2>
-                <InputText type='email' justify='center' />
+                <InputText
+                  type='email'
+                  justify='center'
+                  value={email1}
+                  onChange={handleSetEmail1}
+                  error={errorEmail}
+                />
               </div>
               <div className='InputContainer'>
                 <h2>Repetir email:</h2>
-                <InputText type='email' justify='center' />
+                <InputText
+                  type='email'
+                  justify='center'
+                  value={email2}
+                  onChange={handleSetEmail2}
+                  error={errorEmail}
+                />
               </div>
               <div className='InputContainer'>
                 <h2>Contraseña:</h2>
-                <InputText type='password' justify='center' />
+                <InputText
+                  type='password'
+                  justify='center'
+                  value={password}
+                  onChange={handleSetPassword}
+                  error={errorPassword}
+                />
               </div>
 
+              <Button onClick={handleRegistrar} type='primary'>
+                Registrarse
+              </Button>
               <div className='Buttons'>
-                <Button type='primary'>Registrarse</Button>
-                <Button onClick={handleShowRegistrar} type='add'>
+                <p className='Pregunta'>¿Ya tienes una cuenta?</p>
+                <Button onClick={handleShowRegistrar} type='info'>
                   Iniciar Sesión
                 </Button>
               </div>
