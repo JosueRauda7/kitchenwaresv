@@ -6,6 +6,7 @@ import Tienda from "./pages/Tienda/Tienda";
 import Login from "./pages/Login/Login";
 import { Routes, Route } from "react-router-dom";
 import Carrito from "./components/Cart/Cart";
+import Logout from "./pages/Login/Logout";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path='/' element={<LandingPage />} />
         <Route path='/tienda' element={<Tienda />} />
         <Route path='/login' element={<Login />} />
+        <Route path='/logout' element={<Logout />} />
       </Routes>
     </div>
   );

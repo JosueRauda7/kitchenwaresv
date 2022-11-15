@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { Navigate } from "react-router-dom";
+import { useContext, useState } from "react";
 import axios from "axios";
 import InputText from "../../components/InputText/InputText";
 import PageTitle from "../../components/PageTitle/PageTitle";
@@ -7,8 +8,11 @@ import "./Login.css";
 import Logo from "../../assets/logo_positivo.png";
 import Button from "../../components/Button/Button";
 import ErrorMessageBox from "../../components/ErrorMessageBox/ErrorMessageBox";
+import { UsuarioContext } from "../../contexts/UsuarioContext";
 
 const Login = (props) => {
+  const { isLogged, setIsLogged, usuario, setUsuario } =
+    useContext(UsuarioContext);
   const [showLogin, setShowLogin] = useState(true);
   const [username, setUsername] = useState("");
   const [email1, setEmail1] = useState("");
@@ -92,7 +96,13 @@ const Login = (props) => {
         const url = "http://localhost:8080/api/auth/register";
 
         // console.log(username);
-        await axios.post(url, usuario);
+        const res = await axios.post(url, usuario);
+        const token = res.data.body.token;
+        const nombreUsuario = res.data.body.usuario.usuario.username;
+        localStorage.setItem("token", token);
+        localStorage.setItem("username", nombreUsuario);
+        setUsuario(nombreUsuario);
+        setIsLogged(true);
       }
     } catch (error) {
       validarErrores(error);
@@ -102,21 +112,28 @@ const Login = (props) => {
   const handleLogin = async () => {
     resetearErrores();
     try {
-      const usuario = {
+      const user = {
         username,
         password,
       };
 
       const url = "http://localhost:8080/api/auth/login";
 
-      const res = await axios.post(url, usuario);
-      console.log(res);
+      const res = await axios.post(url, user);
+      const token = res.data.body.token;
+      const nombreUsuario = res.data.body.usuario.usuario.username;
+      localStorage.setItem("token", token);
+      localStorage.setItem("username", nombreUsuario);
+      setUsuario(nombreUsuario);
+      setIsLogged(true);
     } catch (error) {
       validarErrores(error);
     }
   };
 
-  return (
+  return isLogged ? (
+    <Navigate to='/' />
+  ) : (
     <div>
       <div className='Login'>
         <div className='Container'>

@@ -25,10 +25,12 @@
 }
 
 .primary:hover{
-  background-color: #003DD4;;
+  background-image: none;
+  background-color: #003DD4;
 }
 
 .primary:active{
+  background-image: none;
   background-color: #0652DD;
 }
 
