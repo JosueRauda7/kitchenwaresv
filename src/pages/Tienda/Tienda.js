@@ -9,7 +9,7 @@ import "./Tienda.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Footer from "../../components/Footer/Footer";
 import Dashboard from "../../components/Dashboard/Dashboard";
-import { baseUrlProduction } from "../../apiConfig";
+import { baseUrlDevelopment } from "../../apiConfig";
 
 const Tienda = (props) => {
   const [isShowModal, setShowModal] = useState(false);
@@ -18,7 +18,7 @@ const Tienda = (props) => {
   // Get de productos
   useEffect(() => {
     const getProductos = async () => {
-      const url = `${baseUrlProduction}/productos`;
+      const url = `${baseUrlDevelopment}/productos`;
       const productosItems = await axios.get(url);
       setProductos(productosItems.data.body.productos);
     };
