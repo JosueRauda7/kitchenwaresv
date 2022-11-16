@@ -1,13 +1,15 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+
 import Item from "../../components/Item/Item";
 import ItemImg from "../../assets/ItemExample.jpeg";
 import ItemImg2 from "../../assets/ItemExample2.jpeg";
 import ItemImg3 from "../../assets/ItemExample3.jpeg";
 import "./Tienda.css";
-import { useEffect, useState } from "react";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Footer from "../../components/Footer/Footer";
 import Dashboard from "../../components/Dashboard/Dashboard";
-import axios from "axios";
+import { baseUrlProduction } from "../../apiConfig";
 
 const Tienda = (props) => {
   const [isShowModal, setShowModal] = useState(false);
@@ -16,9 +18,8 @@ const Tienda = (props) => {
   // Get de productos
   useEffect(() => {
     const getProductos = async () => {
-      const productosItems = await axios.get(
-        "http://localhost:8080/api/productos"
-      );
+      const url = `${baseUrlProduction}/productos`;
+      const productosItems = await axios.get(url);
       setProductos(productosItems.data.body.productos);
     };
     getProductos();

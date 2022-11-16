@@ -9,6 +9,7 @@ import Logo from "../../assets/logo_positivo.png";
 import Button from "../../components/Button/Button";
 import ErrorMessageBox from "../../components/ErrorMessageBox/ErrorMessageBox";
 import { UsuarioContext } from "../../contexts/UsuarioContext";
+import { baseUrlProduction } from "../../apiConfig";
 
 const Login = (props) => {
   const { isLogged, setIsLogged, usuario, setUsuario } =
@@ -93,7 +94,7 @@ const Login = (props) => {
           password,
         };
 
-        const url = "http://localhost:8080/api/auth/register";
+        const url = `${baseUrlProduction}/auth/register`;
 
         // console.log(username);
         const res = await axios.post(url, usuario);
@@ -117,13 +118,14 @@ const Login = (props) => {
         password,
       };
 
-      const url = "http://localhost:8080/api/auth/login";
-
+      const url = `${baseUrlProduction}/auth/login`;
       const res = await axios.post(url, user);
       const token = res.data.body.token;
       const nombreUsuario = res.data.body.usuario.usuario.username;
       localStorage.setItem("token", token);
       localStorage.setItem("username", nombreUsuario);
+      console.log(url);
+      console.log(res);
       setUsuario(nombreUsuario);
       setIsLogged(true);
     } catch (error) {
