@@ -12,7 +12,7 @@ import { UsuarioContext } from "../../contexts/UsuarioContext";
 import { baseUrlDevelopment } from "../../apiConfig";
 
 const Login = (props) => {
-  const { isLogged, setIsLogged, usuario, setUsuario } =
+  const { isLogged, setIsLogged, setUsuario, setRolUsuario } =
     useContext(UsuarioContext);
   const [showLogin, setShowLogin] = useState(true);
   const [username, setUsername] = useState("");
@@ -121,12 +121,14 @@ const Login = (props) => {
       const url = `${baseUrlDevelopment}/auth/login`;
       const res = await axios.post(url, user);
       const token = res.data.body.token;
+      const idUsuario = res.data.body.usuario.usuario.uid;
       const nombreUsuario = res.data.body.usuario.usuario.username;
+      const rolUsuario = res.data.body.usuario.usuario.rol;
       localStorage.setItem("token", token);
       localStorage.setItem("username", nombreUsuario);
-      console.log(url);
-      console.log(res);
+      localStorage.setItem("idUsuario", idUsuario);
       setUsuario(nombreUsuario);
+      setRolUsuario(rolUsuario);
       setIsLogged(true);
     } catch (error) {
       validarErrores(error);

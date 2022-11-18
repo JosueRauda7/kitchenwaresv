@@ -1,19 +1,32 @@
+import axios from "axios";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { baseUrlDevelopment } from "../../apiConfig";
 import Logo from "../../assets/logo.svg";
 import { UsuarioContext } from "../../contexts/UsuarioContext";
 import "./Menu.css";
 
 const Menu = (props) => {
-  const { usuario, isLogged, setIsLogged, setUsuario } =
+  const { usuario, isLogged, setIsLogged, setUsuario, setRolUsuario } =
     useContext(UsuarioContext);
 
   useEffect(() => {
-    const TOKEN = localStorage.getItem("token");
-    const USERNAME = localStorage.getItem("username");
-    if (TOKEN && USERNAME) {
-      setIsLogged(true);
-      setUsuario(USERNAME);
+    try {
+      const TOKEN = localStorage.getItem("token");
+      const USERNAME = localStorage.getItem("username");
+      const ID_USER = localStorage.getItem("idUsuario");
+      const getRolUsuario = async (id) => {
+        const res = await axios.get(`${baseUrlDevelopment}/usuarios/${id}`);
+        const rolUsuario = res.data.body.usuario.usuario.rol;
+        return rolUsuario;
+      };
+      if (TOKEN && USERNAME && ID_USER) {
+        setIsLogged(true);
+        setUsuario(USERNAME);
+        setRolUsuario(getRolUsuario(ID_USER));
+      }
+    } catch (error) {
+      console.log(error);
     }
   }, []);
 

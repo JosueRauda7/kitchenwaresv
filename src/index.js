@@ -3,15 +3,18 @@ import ReactDOM from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { BrowserRouter, Router } from "react-router-dom";
+import { BrowserRouter } from "react-router-dom";
 import { UsuarioContextProvider } from "./contexts/UsuarioContext";
+import { CarritoContextProvider } from "./contexts/CarritoContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <UsuarioContextProvider>
-    <BrowserRouter>
-      <App />
-    </BrowserRouter>
+    <CarritoContextProvider>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </CarritoContextProvider>
   </UsuarioContextProvider>
 );
 
