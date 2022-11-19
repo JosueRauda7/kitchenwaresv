@@ -32,7 +32,7 @@ const Cart = (props) => {
         ) : (
           carrito.map((producto, id) => (
             <CarritoItem
-              key={producto.id}
+              key={id}
               style={{ marginTop: "20px" }}
               nombre={producto.nombre}
               precio={producto.precio}

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import { baseUrlDevelopment } from "../../apiConfig";
+import { baseUrlProduction } from "../../apiConfig";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import Footer from "../../components/Footer/Footer";
 import Item from "../../components/Item/Item";
@@ -17,7 +17,7 @@ const Categorias = (props) => {
   const categoriaIndexSearch = search.indexOf("categoria");
   const idCategoria = search.split(/\?|=|&/)[categoriaIndexSearch + 1];
   const getProductosCategorias = async (idCat) => {
-    const url = `${baseUrlDevelopment}/categorias/${idCat}`;
+    const url = `${baseUrlProduction}/categorias/${idCat}`;
     const res = await axios.get(url);
     setCategoria(res.data.body.categoria);
     setProductos(res.data.body.categoria.productos);

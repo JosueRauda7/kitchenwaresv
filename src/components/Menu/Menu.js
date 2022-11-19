@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { baseUrlDevelopment } from "../../apiConfig";
+import { baseUrlProduction } from "../../apiConfig";
 import Logo from "../../assets/logo.svg";
 import { UsuarioContext } from "../../contexts/UsuarioContext";
 import "./Menu.css";
@@ -16,7 +16,7 @@ const Menu = (props) => {
       const USERNAME = localStorage.getItem("username");
       const ID_USER = localStorage.getItem("idUsuario");
       const getRolUsuario = async (id) => {
-        const res = await axios.get(`${baseUrlDevelopment}/usuarios/${id}`);
+        const res = await axios.get(`${baseUrlProduction}/usuarios/${id}`);
         const rolUsuario = res.data.body.usuario.usuario.rol;
         return rolUsuario;
       };

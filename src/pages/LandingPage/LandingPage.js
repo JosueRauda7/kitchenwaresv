@@ -10,14 +10,14 @@ import Renaware from "../../assets/renaware.png";
 import Footer from "../../components/Footer/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { baseUrlDevelopment } from "../../apiConfig";
+import { baseUrlProduction } from "../../apiConfig";
 
 const LandingPage = (props) => {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
     const getCategorias = async () => {
-      const res = await axios.get(`${baseUrlDevelopment}/categorias?limit=10`);
+      const res = await axios.get(`${baseUrlProduction}/categorias?limit=10`);
       setCategorias(res.data.body.categorias);
     };
     getCategorias();

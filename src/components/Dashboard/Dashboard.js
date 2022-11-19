@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { baseUrlDevelopment } from "../../apiConfig";
+import { baseUrlProduction } from "../../apiConfig";
 import InputText from "../InputText/InputText";
 import "./Dashboard.css";
 import ItemSelect from "./ItemSelect";
@@ -11,7 +11,7 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     const getCategorias = async () => {
-      const url = `${baseUrlDevelopment}/categorias?limit=15`;
+      const url = `${baseUrlProduction}/categorias?limit=15`;
       const res = await axios.get(url);
       setCategorias(res.data.body.categorias);
     };
@@ -30,16 +30,6 @@ const Dashboard = (props) => {
         justify='left'
       />
       <div>
-        <h2>Filtro</h2>
-        <div className='InputContainer'>
-          <span className='dollar'>$</span>
-          <InputText type='text' placeholder='Min' />
-          <span className='dollar'>-</span>
-          <span className='dollar'>$</span>
-          <InputText type='text' placeholder='Max' />
-        </div>
-      </div>
-      <div>
         <h2>Categorias</h2>
         {categorias.map((cat) => (
           <ItemSelect
@@ -53,6 +43,16 @@ const Dashboard = (props) => {
             {cat.nombre}
           </ItemSelect>
         ))}
+      </div>
+      <div>
+        <h2>Filtro</h2>
+        <div className='InputContainer'>
+          <span className='dollar'>$</span>
+          <InputText type='text' placeholder='Min' />
+          <span className='dollar'>-</span>
+          <span className='dollar'>$</span>
+          <InputText type='text' placeholder='Max' />
+        </div>
       </div>
     </div>
   );

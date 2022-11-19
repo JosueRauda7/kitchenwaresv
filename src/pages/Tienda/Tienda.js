@@ -9,8 +9,8 @@ import "./Tienda.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Footer from "../../components/Footer/Footer";
 import Dashboard from "../../components/Dashboard/Dashboard";
-import { baseUrlDevelopment } from "../../apiConfig";
 import { CarritoContext } from "../../contexts/CarritoContext";
+import { baseUrlProduction } from "../../apiConfig";
 
 const Tienda = (props) => {
   // const [isShowModal, setShowModal] = useState(false);
@@ -20,7 +20,7 @@ const Tienda = (props) => {
   // Get de productos
   useEffect(() => {
     const getProductos = async () => {
-      const url = `${baseUrlDevelopment}/productos`;
+      const url = `${baseUrlProduction}/productos`;
       const productosItems = await axios.get(url);
       setProductos(productosItems.data.body.productos);
     };
