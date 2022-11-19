@@ -1,34 +1,26 @@
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { baseUrlDevelopment } from "../../apiConfig";
 import InputText from "../InputText/InputText";
 import "./Dashboard.css";
 import ItemSelect from "./ItemSelect";
 
 const Dashboard = (props) => {
-  let listaCategorias = [
-    {
-      ruta: "/tienda/tuppers",
-      categoria: "Recipientes para alimentos",
-    },
-    {
-      ruta: "/tienda/botellas",
-      categoria: "Botellas",
-    },
-    {
-      ruta: "/tienda/cocina",
-      categoria: "Utensilios de cocina",
-    },
-    {
-      ruta: "/tienda/mesa",
-      categoria: "Utensilios de mesa",
-    },
-    {
-      ruta: "/tienda/sartenes",
-      categoria: "Ollas y sartenes",
-    },
-    {
-      ruta: "/tienda/vajillas",
-      categoria: "Vajillas",
-    },
-  ];
+  const [categorias, setCategorias] = useState([]);
+  let onSelectCategory = props.onSelectCategory;
+
+  useEffect(() => {
+    const getCategorias = async () => {
+      const url = `${baseUrlDevelopment}/categorias?limit=15`;
+      const res = await axios.get(url);
+      setCategorias(res.data.body.categorias);
+    };
+    getCategorias();
+  }, []);
+
+  if (!props.onSelectCategory) {
+    onSelectCategory = () => {};
+  }
   return (
     <div className='Dashboard'>
       <h1>Tienda</h1>
@@ -49,9 +41,16 @@ const Dashboard = (props) => {
       </div>
       <div>
         <h2>Categorias</h2>
-        {listaCategorias.map((cat, id) => (
-          <ItemSelect key={id} ruta={cat.ruta}>
-            {cat.categoria}
+        {categorias.map((cat) => (
+          <ItemSelect
+            key={cat._id}
+            id={cat._id}
+            onSelectCategory={onSelectCategory}
+            ruta={`/tienda/${cat.nombre
+              .toLowerCase()
+              .split(" ")
+              .join("-")}?categoria=${cat._id}`}>
+            {cat.nombre}
           </ItemSelect>
         ))}
       </div>

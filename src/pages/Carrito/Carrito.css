@@ -1,0 +1,31 @@
+.CarritoContainer{
+  margin-top: 12vh;
+  padding: 20px 50px;
+}
+
+.CarritoItemsContainer{
+  padding: 0 30px;
+}
+
+.CarritoItem{
+  margin-top: 20px;
+  display: flex;
+  border: 0.5 solid black;
+}
+
+.CarritoItem .CarritoItemBody{
+  padding: 10px 0;
+}
+
+.CarritoItem .CarritoItemBody  h2{
+  color: #0e49de;
+}
+
+.CarritoItem .CarritoItemImagen{
+  max-width: 15%;
+  margin-right: 20px;
+}
+
+.CarritoItem .CarritoItemImagen img {
+  max-width: 100%;
+}

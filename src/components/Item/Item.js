@@ -20,8 +20,9 @@ const Item = (props) => {
       <div className='FooterItem'>
         <div className='Buttons'>
           <Button type='info'>Ver mas detalles...</Button>
-          <Button type='primary'>Comprar</Button>
-          <Button type='add'>Añadir al carrito</Button>
+          <Button type='primary' onClick={props.anidarCarrito}>
+            Añadir al carrito
+          </Button>
         </div>
       </div>
     </div>

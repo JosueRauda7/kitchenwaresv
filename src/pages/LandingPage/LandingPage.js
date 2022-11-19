@@ -3,19 +3,26 @@ import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
 import { Link } from "react-router-dom";
 
-import Tupper from "../../assets/tupper.jpg";
-import Bottle from "../../assets/bottle.jpg";
-import KitchenAccesories from "../../assets/kitchenaccesories.jpg";
-import Tableware from "../../assets/tableware.jpg";
-import Skillet from "../../assets/skillet.jpg";
-import Plates from "../../assets/plates.jpg";
+import NoImage from "../../assets/tupper.jpg";
 
 import Tupperware from "../../assets/tupperware.png";
 import Renaware from "../../assets/renaware.png";
 import Footer from "../../components/Footer/Footer";
-// import Carrito from "../../components/Cart/Cart";
+import { useEffect, useState } from "react";
+import axios from "axios";
+import { baseUrlDevelopment } from "../../apiConfig";
 
 const LandingPage = (props) => {
+  const [categorias, setCategorias] = useState([]);
+
+  useEffect(() => {
+    const getCategorias = async () => {
+      const res = await axios.get(`${baseUrlDevelopment}/categorias?limit=10`);
+      setCategorias(res.data.body.categorias);
+    };
+    getCategorias();
+  }, []);
+
   return (
     <div className='LandingPage'>
       {/* <Carrito /> */}
@@ -38,36 +45,26 @@ const LandingPage = (props) => {
           <h3>¡Visita nuestra Tienda!</h3>
         </div>
         <div className='CatalogoContainer'>
-          <Card img={Tupper} title='Recipientes para alimentos'>
-            <Link className='LinkButton' to='/tienda/tuppers'>
-              <Button type='primary'>Ver productos</Button>
-            </Link>
-          </Card>
-          <Card img={Bottle} title='Botellas'>
-            <Link className='LinkButton' to='/tienda/botellas'>
-              <Button type='primary'>Ver productos</Button>
-            </Link>
-          </Card>
-          <Card img={KitchenAccesories} title='Utensilios de cocina'>
-            <Link className='LinkButton' to='/tienda/cocina'>
-              <Button type='primary'>Ver productos</Button>
-            </Link>
-          </Card>
-          <Card img={Tableware} title='Utensilios de mesa'>
-            <Link className='LinkButton' to='/tienda/mesa'>
-              <Button type='primary'>Ver productos</Button>
-            </Link>
-          </Card>
-          <Card img={Skillet} title='Ollas y sartenes'>
-            <Link className='LinkButton' to='/tienda/sartenes'>
-              <Button type='primary'>Ver productos</Button>
-            </Link>
-          </Card>
-          <Card img={Plates} title='Vajillas'>
-            <Link className='LinkButton' to='/tienda/vajillas'>
-              <Button type='primary'>Ver productos</Button>
-            </Link>
-          </Card>
+          {!categorias ? (
+            <h2 style={{ marginTop: "20px" }}>
+              No se encuentran productos de esta categoria.
+            </h2>
+          ) : (
+            categorias.map((cat) => {
+              return (
+                <Card key={cat._id} img={cat.img || NoImage} title={cat.nombre}>
+                  <Link
+                    className='LinkButton'
+                    to={`/tienda/${cat.nombre
+                      .toLowerCase()
+                      .split(" ")
+                      .join("-")}?categoria=${cat._id}`}>
+                    <Button type='primary'>Ver productos</Button>
+                  </Link>
+                </Card>
+              );
+            })
+          )}
         </div>
       </section>
       <section className='NoParallax Marcas'>
