@@ -1,5 +1,8 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
+// Importando SweetAlert
+import Swal from "sweetalert2";
+import withReactContent from "sweetalert2-react-content";
 
 import Item from "../../components/Item/Item";
 import ItemImg from "../../assets/ItemExample.jpeg";
@@ -10,12 +13,13 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import Footer from "../../components/Footer/Footer";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import { CarritoContext } from "../../contexts/CarritoContext";
-import { baseUrlProduction } from "../../apiConfig";
+import { urlImagesDevelopment, baseUrlProduction } from "../../apiConfig";
 
 const Tienda = (props) => {
   // const [isShowModal, setShowModal] = useState(false);
   const [productos, setProductos] = useState([]);
   const { carrito, setCarrito } = useContext(CarritoContext);
+  const MySwal = withReactContent(Swal);
 
   // Get de productos
   useEffect(() => {
@@ -28,7 +32,28 @@ const Tienda = (props) => {
   }, []);
 
   const handleAnidarCarrito = (producto) => {
-    setCarrito([...carrito, producto]);
+    let banderaAgregar = true;
+    if (carrito.length === 0) {
+      producto.cantidad = 1;
+    }
+    carrito.map((p) => {
+      producto.cantidad = 1;
+      if (p._id === producto._id) {
+        p.cantidad += 1;
+        banderaAgregar = false;
+        return p;
+      }
+    });
+    if (banderaAgregar) {
+      setCarrito([...carrito, producto]);
+    }
+    MySwal.fire({
+      title: "¡Producto agregado!",
+      html: "Se ha guardado en el carrito.",
+      icon: "success",
+      timer: "1400",
+      showConfirmButton: false,
+    });
   };
 
   // const handleModal = (descripcion) => {};
@@ -43,7 +68,11 @@ const Tienda = (props) => {
             {productos.map((producto, id) => (
               <Item
                 key={id}
-                img={ItemImg}
+                img={
+                  producto.img
+                    ? `${urlImagesDevelopment}/uploads/productos/${producto.img}`
+                    : ItemImg
+                }
                 title={producto.nombre}
                 precio={producto.precio}
                 anidarCarrito={() => handleAnidarCarrito(producto)}

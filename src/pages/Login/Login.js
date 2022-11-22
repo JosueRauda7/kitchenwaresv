@@ -1,5 +1,5 @@
 import { Navigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import InputText from "../../components/InputText/InputText";
 import PageTitle from "../../components/PageTitle/PageTitle";
@@ -12,9 +12,9 @@ import { UsuarioContext } from "../../contexts/UsuarioContext";
 import { baseUrlProduction } from "../../apiConfig";
 
 const Login = (props) => {
-  const { isLogged, setIsLogged, setUsuario, setRolUsuario } =
+  const { isLogged, setIsLogged, setUsuario, setRolUsuario, setImgUsuario } =
     useContext(UsuarioContext);
-  const [showLogin, setShowLogin] = useState(true);
+  const [showLogin, setShowLogin] = useState(!props.showRegistrar);
   const [username, setUsername] = useState("");
   const [email1, setEmail1] = useState("");
   const [email2, setEmail2] = useState("");
@@ -22,6 +22,10 @@ const Login = (props) => {
   const [errorUsername, setErrorUsername] = useState(null);
   const [errorEmail, setErrorEmail] = useState(null);
   const [errorPassword, setErrorPassword] = useState(null);
+
+  useEffect(() => {
+    setShowLogin(!props.showRegistrar);
+  }, [props.showRegistrar]);
 
   const validarErrores = (error) => {
     if (error.response.data.errores.errors) {
@@ -57,6 +61,16 @@ const Login = (props) => {
     setPassword("");
     resetearErrores();
     setShowLogin(!showLogin);
+  };
+
+  const handlePressEnter = async (e) => {
+    if (e.key === "Enter") {
+      if (showLogin) {
+        await handleLogin();
+      } else {
+        await handleRegistrar();
+      }
+    }
   };
 
   const handleSetUsername = (e) => {
@@ -124,12 +138,14 @@ const Login = (props) => {
       const idUsuario = res.data.body.usuario.usuario.uid;
       const nombreUsuario = res.data.body.usuario.usuario.username;
       const rolUsuario = res.data.body.usuario.usuario.rol;
+      const imagenUsuario = res.data.body.usuario.usuario.img;
       localStorage.setItem("token", token);
       localStorage.setItem("username", nombreUsuario);
       localStorage.setItem("idUsuario", idUsuario);
       setUsuario(nombreUsuario);
       setRolUsuario(rolUsuario);
       setIsLogged(true);
+      setImgUsuario(imagenUsuario);
     } catch (error) {
       validarErrores(error);
     }
@@ -157,6 +173,7 @@ const Login = (props) => {
                   value={username}
                   onChange={handleSetUsername}
                   justify='center'
+                  onKeyDown={handlePressEnter}
                 />
               </div>
               <div className='InputContainer'>
@@ -166,6 +183,7 @@ const Login = (props) => {
                   justify='center'
                   value={password}
                   onChange={handleSetPassword}
+                  onKeyDown={handlePressEnter}
                 />
               </div>
               {errorUsername ? (
@@ -194,6 +212,7 @@ const Login = (props) => {
                   justify='center'
                   value={username}
                   onChange={handleSetUsername}
+                  onKeyDown={handlePressEnter}
                   error={errorUsername}
                 />
               </div>
@@ -204,6 +223,7 @@ const Login = (props) => {
                   justify='center'
                   value={email1}
                   onChange={handleSetEmail1}
+                  onKeyDown={handlePressEnter}
                   error={errorEmail}
                 />
               </div>
@@ -214,6 +234,7 @@ const Login = (props) => {
                   justify='center'
                   value={email2}
                   onChange={handleSetEmail2}
+                  onKeyDown={handlePressEnter}
                   error={errorEmail}
                 />
               </div>
@@ -224,6 +245,7 @@ const Login = (props) => {
                   justify='center'
                   value={password}
                   onChange={handleSetPassword}
+                  onKeyDown={handlePressEnter}
                   error={errorPassword}
                 />
               </div>

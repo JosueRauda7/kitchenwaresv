@@ -36,9 +36,37 @@ li{
   font-size: 1.5rem;
   color: white;
   padding: 20px 10px;
+  cursor: pointer;
 }
 
 .Logo{
   height: 12vh;
   padding: 10px;
+}
+
+/* SUBMENU */
+.SubMenu{
+  position: absolute;
+  top: 12vh;
+  right: 10px;
+  z-index: 999;
+  background-image: linear-gradient(to top right, #003DD4, #29ABE2);
+  width: 300px;
+}
+
+.SubMenuContainer{
+  width: 100%;
+}
+
+.SubMenuContainer .Link{
+  display: block;
+  font-weight: 600;
+  font-size: 1.2rem;
+  color: white;
+  padding: 10px 10px;
+}
+
+.SubMenuContainer .UserOption{
+  display: flex;
+  align-items: center;
 }

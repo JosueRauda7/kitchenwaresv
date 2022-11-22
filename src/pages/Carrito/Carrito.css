@@ -3,6 +3,10 @@
   padding: 20px 50px;
 }
 
+.CarritoBody {
+  display: flex;
+}
+
 .CarritoItemsContainer{
   padding: 0 30px;
 }
@@ -11,15 +15,25 @@
   margin-top: 20px;
   display: flex;
   border: 0.5 solid black;
+  background-color: #efefef;
 }
 
 .CarritoItem .CarritoItemBody{
   padding: 10px 0;
 }
 
-.CarritoItem .CarritoItemBody  h2{
-  color: #0e49de;
+.CarritoItem .CarritoItemBody p{
+  font-weight: bold;
 }
+
+.CarritoItem .CarritoItemBody p .Buttons{
+  display: flex;
+  font-size: 1.5rem;
+  align-items: center;
+}
+/* .CarritoItem .CarritoItemBody  h2{
+  color: #0e49de;
+} */
 
 .CarritoItem .CarritoItemImagen{
   max-width: 15%;

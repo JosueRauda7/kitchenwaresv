@@ -3,6 +3,8 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import { CarritoContext } from "../../contexts/CarritoContext";
 import NoImage from "../../assets/ItemExample.jpeg";
 import "./Carrito.css";
+import { urlImagesDevelopment } from "../../apiConfig";
+import Button from "../../components/Button/Button";
 
 export const CarritoItem = (props) => {
   return (
@@ -12,7 +14,17 @@ export const CarritoItem = (props) => {
       </div>
       <div className='CarritoItemBody'>
         <h2>{props.nombre}</h2>
-        <span>${props.precio}</span>
+        <p>${props.precio}</p>
+        <p>
+          Cantidad:{" "}
+          <div className='Buttons'>
+            <Button type='primary' style={{ height: "2px" }}>
+              +
+            </Button>
+            {props.cantidad}
+            <Button type='primary'>-</Button>
+          </div>
+        </p>
       </div>
     </div>
   );
@@ -24,22 +36,29 @@ const Cart = (props) => {
   return (
     <div className='CarritoContainer'>
       <PageTitle>Carrito de compras</PageTitle>
-      <div className='CarritoItemsContainer'>
-        {!carrito ? (
-          <h2 style={{ marginTop: "20px" }}>
-            No se encuentran productos de esta categoria.
-          </h2>
-        ) : (
-          carrito.map((producto, id) => (
-            <CarritoItem
-              key={id}
-              style={{ marginTop: "20px" }}
-              nombre={producto.nombre}
-              precio={producto.precio}
-              img={NoImage}
-            />
-          ))
-        )}
+      <div className='CarritoBody'>
+        <div className='CarritoItemsContainer'>
+          {carrito.length === 0 ? (
+            <h2 style={{ marginTop: "20px" }}>
+              El carrito está vacío, no hay productos por el momento.
+            </h2>
+          ) : (
+            carrito.map((producto, id) => (
+              <CarritoItem
+                key={id}
+                style={{ marginTop: "20px" }}
+                nombre={producto.nombre}
+                precio={producto.precio}
+                cantidad={producto.cantidad}
+                img={
+                  producto.img
+                    ? `${urlImagesDevelopment}/uploads/productos/${producto.img}`
+                    : NoImage
+                }
+              />
+            ))
+          )}
+        </div>
       </div>
     </div>
   );
