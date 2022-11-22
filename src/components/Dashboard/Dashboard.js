@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { baseUrlProduction } from "../../apiConfig";
+import { baseUrl } from "../../apiConfig";
 import InputText from "../InputText/InputText";
 import "./Dashboard.css";
 import ItemSelect from "./ItemSelect";
@@ -11,7 +11,7 @@ const Dashboard = (props) => {
 
   useEffect(() => {
     const getCategorias = async () => {
-      const url = `${baseUrlProduction}/categorias?limit=15`;
+      const url = `${baseUrl}/categorias?limit=15`;
       const res = await axios.get(url);
       setCategorias(res.data.body.categorias);
     };

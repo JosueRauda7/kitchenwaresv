@@ -5,7 +5,7 @@ import { useLocation } from "react-router";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
-import { baseUrlProduction, urlImagesDevelopment } from "../../apiConfig";
+import { baseUrl, urlImages } from "../../apiConfig";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import Footer from "../../components/Footer/Footer";
 import Item from "../../components/Item/Item";
@@ -21,7 +21,7 @@ const Categorias = (props) => {
   const categoriaIndexSearch = search.indexOf("categoria");
   const idCategoria = search.split(/\?|=|&/)[categoriaIndexSearch + 1];
   const getProductosCategorias = async (idCat) => {
-    const url = `${baseUrlProduction}/categorias/${idCat}`;
+    const url = `${baseUrl}/categorias/${idCat}`;
     const res = await axios.get(url);
     setCategoria(res.data.body.categoria);
     setProductos(res.data.body.categoria.productos);
@@ -78,7 +78,7 @@ const Categorias = (props) => {
                   key={id}
                   img={
                     producto.img
-                      ? `${urlImagesDevelopment}/uploads/productos/${producto.img}`
+                      ? `${urlImages}/uploads/productos/${producto.img}`
                       : ItemImg
                   }
                   title={producto.nombre}

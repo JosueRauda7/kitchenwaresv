@@ -1,6 +1,6 @@
 import "./UserIcon.css";
 import NoUserImg from "../../assets/usuario.png";
-import { urlImagesDevelopment } from "../../apiConfig";
+import { urlImages } from "../../apiConfig";
 
 const UserIcon = (props) => {
   return (
@@ -8,9 +8,7 @@ const UserIcon = (props) => {
       <img
         className='ImgUserIcon'
         src={
-          !props.img
-            ? NoUserImg
-            : `${urlImagesDevelopment}/uploads/usuarios/${props.img}`
+          !props.img ? NoUserImg : `${urlImages}/uploads/usuarios/${props.img}`
         }
       />
     </div>

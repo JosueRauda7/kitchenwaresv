@@ -13,7 +13,7 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import Footer from "../../components/Footer/Footer";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import { CarritoContext } from "../../contexts/CarritoContext";
-import { urlImagesDevelopment, baseUrlProduction } from "../../apiConfig";
+import { urlImages, baseUrl } from "../../apiConfig";
 
 const Tienda = (props) => {
   // const [isShowModal, setShowModal] = useState(false);
@@ -24,7 +24,7 @@ const Tienda = (props) => {
   // Get de productos
   useEffect(() => {
     const getProductos = async () => {
-      const url = `${baseUrlProduction}/productos`;
+      const url = `${baseUrl}/productos`;
       const productosItems = await axios.get(url);
       setProductos(productosItems.data.body.productos);
     };
@@ -70,7 +70,7 @@ const Tienda = (props) => {
                 key={id}
                 img={
                   producto.img
-                    ? `${urlImagesDevelopment}/uploads/productos/${producto.img}`
+                    ? `${urlImages}/uploads/productos/${producto.img}`
                     : ItemImg
                 }
                 title={producto.nombre}

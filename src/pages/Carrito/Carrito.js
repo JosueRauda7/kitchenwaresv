@@ -3,7 +3,7 @@ import PageTitle from "../../components/PageTitle/PageTitle";
 import { CarritoContext } from "../../contexts/CarritoContext";
 import NoImage from "../../assets/ItemExample.jpeg";
 import "./Carrito.css";
-import { urlImagesDevelopment } from "../../apiConfig";
+import { urlImages } from "../../apiConfig";
 import Button from "../../components/Button/Button";
 
 export const CarritoItem = (props) => {
@@ -52,7 +52,7 @@ const Cart = (props) => {
                 cantidad={producto.cantidad}
                 img={
                   producto.img
-                    ? `${urlImagesDevelopment}/uploads/productos/${producto.img}`
+                    ? `${urlImages}/uploads/productos/${producto.img}`
                     : NoImage
                 }
               />
