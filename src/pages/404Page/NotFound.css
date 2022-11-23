@@ -1,0 +1,36 @@
+.NotFoundContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.ImgNotFoundContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 40%;
+}
+
+.BodyNotFound{
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  /* background-color: aqua; */
+}
+
+.imgNotFound{
+  width: auto;
+  height: 88vh;
+}
+
+.ButtonNotFound, .h1NotFound{
+  margin-left: 20px;
+}
+
+.ButtonNotFound{
+  margin-top: 25px;
+  width: 20%;
+}

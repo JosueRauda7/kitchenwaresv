@@ -13,6 +13,7 @@ const Menu = (props) => {
     isLogged,
     setIsLogged,
     setUsuario,
+    rolUsuario,
     setRolUsuario,
     imgUsuario,
     setImgUsuario,
@@ -25,15 +26,15 @@ const Menu = (props) => {
       const ID_USER = localStorage.getItem("idUsuario");
       const getUsuarioInfo = async (id) => {
         const res = await axios.get(`${baseUrl}/usuarios/${id}`);
-        const rolUsuario = res.data.body.usuario.usuario.rol;
+        const rolUser = res.data.body.usuario.usuario.rol;
         const imgUser = res.data.body.usuario.usuario.img;
         setImgUsuario(imgUser);
-        return rolUsuario;
+        setRolUsuario(rolUser);
       };
       if (TOKEN && USERNAME && ID_USER) {
         setIsLogged(true);
         setUsuario(USERNAME);
-        setRolUsuario(getUsuarioInfo(ID_USER).rolUsuario);
+        getUsuarioInfo(ID_USER);
       }
     } catch (error) {
       console.log(error);
@@ -60,17 +61,21 @@ const Menu = (props) => {
         </Link>
         {!isLogged ? (
           <>
-            <Link to='/login' className='aLink'>
-              <li className='Link'>Iniciar Sesión</li>
-            </Link>
             <Link to='/registrar' className='aLink'>
               <li className='Link'>Regístrarse</li>
             </Link>
           </>
         ) : (
-          <li className='Link aLink' onClick={props.onClickedToShow}>
-            <UserIcon img={imgUsuario} size='small' shadow />
-          </li>
+          <>
+            {rolUsuario === "ADMIN_ROL" && (
+              <Link to='/administrar' className='aLink'>
+                <li className='Link'>Administrar</li>
+              </Link>
+            )}
+            <li className='Link aLink' onClick={props.onClickedToShow}>
+              <UserIcon img={imgUsuario} size='small' shadow />
+            </li>
+          </>
         )}
       </ul>
       {props.isClicked && (

@@ -11,9 +11,13 @@ import { UsuarioContext } from "./contexts/UsuarioContext";
 import Categorias from "./pages/Categorias/Categorias";
 import Cart from "./pages/Carrito/Carrito";
 import Usuario from "./pages/Usuario/Usuario";
+import PageNotFound from "./pages/404Page/404Page";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
+  const { isLogged, rolUsuario } = useContext(UsuarioContext);
+
   const handleShowSubMenu = () => {
     setIsClicked(!isClicked);
   };
@@ -23,7 +27,6 @@ function App() {
       setIsClicked(false);
     }
   };
-  const { isLogged, rolUsuario, setRolUsuario } = useContext(UsuarioContext);
 
   return (
     <div className='App'>
@@ -42,11 +45,14 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/registrar' element={<Login showRegistrar />} />
           <Route path='/logout' element={<Logout />} />
+          {rolUsuario === "ADMIN_ROL" && isLogged ? (
+            <Route path='/administrar' element={<Admin />} />
+          ) : null}
           {isLogged ? <Route path='/profile' element={<Usuario />} /> : null}
           {isLogged ? (
             <Route path='/profile/edit' element={<Usuario />} />
           ) : null}
-          <Route path='*' element={null} />
+          <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
     </div>

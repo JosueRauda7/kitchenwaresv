@@ -40,7 +40,10 @@ const Usuario = (props) => {
             </Link>
           </div>
           <div className='DatosUsuario'>
-            <PageTitle>{usuario}</PageTitle>
+            <PageTitle>Hola, {usuario}</PageTitle>
+            <div className='DatosUsuarioBody'>
+              <h1 className='h1DatosUsuario'>Pagos</h1>
+            </div>
           </div>
         </div>
       </div>
