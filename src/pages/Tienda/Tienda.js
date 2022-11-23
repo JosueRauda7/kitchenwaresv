@@ -75,7 +75,8 @@ const Tienda = (props) => {
                 }
                 title={producto.nombre}
                 precio={producto.precio}
-                anidarCarrito={() => handleAnidarCarrito(producto)}
+                titleButton='Añadir al carrito'
+                onClick={() => handleAnidarCarrito(producto)}
               />
             ))}
           </div>

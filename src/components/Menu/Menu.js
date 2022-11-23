@@ -41,8 +41,13 @@ const Menu = (props) => {
   }, []);
 
   return (
-    <div className='Menu' onClicked={props.onClickedToShow}>
-      <img className='Logo' src={Logo} alt='logo de Kitchenware' />
+    <div className='Menu' onClick={props.onClickedToHide}>
+      <img
+        className='Logo'
+        src={Logo}
+        alt='logo de Kitchenware'
+        onClick={props.onClickedToHide}
+      />
       <ul>
         <Link to='/' className='aLink'>
           <li className='Link'>Inicio</li>
@@ -64,18 +69,22 @@ const Menu = (props) => {
           </>
         ) : (
           <li className='Link aLink' onClick={props.onClickedToShow}>
-            {usuario}
+            <UserIcon img={imgUsuario} size='small' shadow />
           </li>
         )}
       </ul>
-      {!props.isClicked && (
+      {props.isClicked && (
         <ul className='SubMenu'>
           <div className='SubMenuContainer' onClick={props.onClickedToShow}>
-            <li className='Link aLink UserOption'>
-              <UserIcon img={imgUsuario} />
-              {usuario}
-            </li>
-            <li className='Link aLink'>Editar Usuario</li>
+            <Link className='aLink' to={`/${usuario}`}>
+              <li className='Link UserOption'>
+                <UserIcon img={imgUsuario} size='small' />
+                {usuario}
+              </li>
+            </Link>
+            <Link className='aLink' to={`/${usuario}/edit`}>
+              <li className='Link'>Editar Usuario</li>
+            </Link>
             <Link className='aLink' to='logout'>
               <li className='Link'>Cerrar Sesión</li>
             </Link>

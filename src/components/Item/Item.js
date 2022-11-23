@@ -1,3 +1,5 @@
+import { Navigate } from "react-router";
+import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./Item.css";
 
@@ -9,7 +11,7 @@ const Item = (props) => {
       </div>
       <div className='Header'>
         <h3>{props.title}</h3>
-        <p className='Precio'>${props.precio}</p>
+        {props.precio && <p className='Precio'>Precio: ${props.precio}</p>}
       </div>
       {/* <div className='Body'>
         <p className='Descripcion'>
@@ -19,10 +21,16 @@ const Item = (props) => {
       </div> */}
       <div className='FooterItem'>
         <div className='Buttons'>
-          <Button type='info'>Ver mas detalles...</Button>
-          <Button type='primary' onClick={props.anidarCarrito}>
-            Añadir al carrito
-          </Button>
+          {/* <Button type='info'>Ver mas detalles...</Button> */}
+          {props.to ? (
+            <Link to={props.to} className='Button primary LinkButton LinkCard'>
+              {props.titleButton}
+            </Link>
+          ) : (
+            <Button type='primary' onClick={props.onClick}>
+              {props.titleButton}
+            </Button>
+          )}
         </div>
       </div>
     </div>

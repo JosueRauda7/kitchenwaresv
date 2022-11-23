@@ -6,7 +6,9 @@ const UserIcon = (props) => {
   return (
     <div className='userIconImage'>
       <img
-        className='ImgUserIcon'
+        className={`ImgUserIcon ${props.size} ${
+          props.shadow ? "ImgUserIconLink" : ""
+        }`}
         src={
           !props.img ? NoUserImg : `${urlImages}/uploads/usuarios/${props.img}`
         }

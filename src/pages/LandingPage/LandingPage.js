@@ -10,14 +10,15 @@ import Renaware from "../../assets/renaware.png";
 import Footer from "../../components/Footer/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { baseUrlProduction } from "../../apiConfig";
+import { baseUrl } from "../../apiConfig";
+import Item from "../../components/Item/Item";
 
 const LandingPage = (props) => {
   const [categorias, setCategorias] = useState([]);
 
   useEffect(() => {
     const getCategorias = async () => {
-      const res = await axios.get(`${baseUrlProduction}/categorias?limit=10`);
+      const res = await axios.get(`${baseUrl}/categorias?limit=10`);
       setCategorias(res.data.body.categorias);
     };
     getCategorias();
@@ -52,16 +53,16 @@ const LandingPage = (props) => {
           ) : (
             categorias.map((cat) => {
               return (
-                <Card key={cat._id} img={cat.img || NoImage} title={cat.nombre}>
-                  <Link
-                    className='LinkButton'
-                    to={`/tienda/${cat.nombre
-                      .toLowerCase()
-                      .split(" ")
-                      .join("-")}?categoria=${cat._id}`}>
-                    <Button type='primary'>Ver productos</Button>
-                  </Link>
-                </Card>
+                <Item
+                  key={cat._id}
+                  img={cat.img || NoImage}
+                  titleButton='Ver productos'
+                  to={`/tienda/${cat.nombre
+                    .toLowerCase()
+                    .split(" ")
+                    .join("-")}?categoria=${cat._id}`}
+                  title={cat.nombre}
+                />
               );
             })
           )}

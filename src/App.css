@@ -31,9 +31,18 @@ body{
   font-family: 'Raleway', sans-serif;
 }
 
+.Container {
+  margin-top: 12vh;
+}
+
 .LinkButton, .LinkButton *{
   color: white;
   text-decoration: none;
   height: inherit;
   width: inherit;
+  /* font-weight: bold; */
+}
+
+.LinkCard {
+  font-weight: bold;
 }

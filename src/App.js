@@ -10,18 +10,30 @@ import { useContext, useState } from "react";
 import { UsuarioContext } from "./contexts/UsuarioContext";
 import Categorias from "./pages/Categorias/Categorias";
 import Cart from "./pages/Carrito/Carrito";
+import Usuario from "./pages/Usuario/Usuario";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
   const handleShowSubMenu = () => {
     setIsClicked(!isClicked);
   };
-  // const { rolUsuario, setRolUsuario } = useContext(UsuarioContext);
+
+  const handleShowHide = () => {
+    if (isClicked) {
+      setIsClicked(false);
+    }
+  };
+  const { isLogged, rolUsuario, setRolUsuario } = useContext(UsuarioContext);
+
   return (
     <div className='App'>
-      <Menu onClickedToShow={handleShowSubMenu} isClicked={isClicked} />
-      <Carrito onClick={() => setIsClicked(true)} />
-      <div onClick={() => setIsClicked(true)}>
+      <Menu
+        onClickedToShow={handleShowSubMenu}
+        onClickedToHide={handleShowHide}
+        isClicked={isClicked}
+      />
+      <Carrito onClick={() => setIsClicked(false)} />
+      <div onClick={() => setIsClicked(false)}>
         <Routes>
           <Route path='/' element={<LandingPage />} />
           <Route path='/tienda' element={<Tienda />} />
@@ -30,6 +42,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/registrar' element={<Login showRegistrar />} />
           <Route path='/logout' element={<Logout />} />
+          {isLogged ? <Route path='/:username' element={<Usuario />} /> : null}
         </Routes>
       </div>
     </div>
