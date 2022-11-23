@@ -42,7 +42,11 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/registrar' element={<Login showRegistrar />} />
           <Route path='/logout' element={<Logout />} />
-          {isLogged ? <Route path='/:username' element={<Usuario />} /> : null}
+          {isLogged ? <Route path='/profile' element={<Usuario />} /> : null}
+          {isLogged ? (
+            <Route path='/profile/edit' element={<Usuario />} />
+          ) : null}
+          <Route path='*' element={null} />
         </Routes>
       </div>
     </div>

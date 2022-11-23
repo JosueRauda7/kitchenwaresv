@@ -76,13 +76,13 @@ const Menu = (props) => {
       {props.isClicked && (
         <ul className='SubMenu'>
           <div className='SubMenuContainer' onClick={props.onClickedToShow}>
-            <Link className='aLink' to={`/${usuario}`}>
+            <Link className='aLink' to={`profile`}>
               <li className='Link UserOption'>
                 <UserIcon img={imgUsuario} size='small' />
                 {usuario}
               </li>
             </Link>
-            <Link className='aLink' to={`/${usuario}/edit`}>
+            <Link className='aLink' to={`/profile/edit`}>
               <li className='Link'>Editar Usuario</li>
             </Link>
             <Link className='aLink' to='logout'>

@@ -31,18 +31,22 @@ const Dashboard = (props) => {
       />
       <div>
         <h2>Categorias</h2>
-        {categorias.map((cat) => (
-          <ItemSelect
-            key={cat._id}
-            id={cat._id}
-            onSelectCategory={onSelectCategory}
-            ruta={`/tienda/${cat.nombre
-              .toLowerCase()
-              .split(" ")
-              .join("-")}?categoria=${cat._id}`}>
-            {cat.nombre}
-          </ItemSelect>
-        ))}
+        {!categorias ? (
+          <p className='DashBoardNoCategorias'>No hay categorias disponibles</p>
+        ) : (
+          categorias.map((cat) => (
+            <ItemSelect
+              key={cat._id}
+              id={cat._id}
+              onSelectCategory={onSelectCategory}
+              ruta={`/tienda/${cat.nombre
+                .toLowerCase()
+                .split(" ")
+                .join("-")}?categoria=${cat._id}`}>
+              {cat.nombre}
+            </ItemSelect>
+          ))
+        )}
       </div>
       <div>
         <h2>Filtro</h2>

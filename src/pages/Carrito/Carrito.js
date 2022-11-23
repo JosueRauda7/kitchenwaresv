@@ -111,6 +111,7 @@ const Cart = (props) => {
   const handleDeleteItem = (product) => {
     const nuevoCarrito = carrito.filter((p) => p._id !== product._id);
     setCarrito(nuevoCarrito);
+    setTotal(total - (product.precio * product.cantidad))
   };
 
   const handleAskToDelete = (product) => {

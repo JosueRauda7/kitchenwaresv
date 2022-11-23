@@ -17,6 +17,10 @@
   margin-bottom: 10px;
 }
 
+.Dashboard .DashBoardNoCategorias{
+  margin-top: 5px;
+}
+
 .Dashboard > *{
   margin: 20px 0;
 }
