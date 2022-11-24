@@ -13,7 +13,6 @@
 .LandingPage section{
   transform-style: preserve-3d;
   position: relative;
-  height: 88vh;
   /* align-items: center; */
   /* justify-content: center; */
   /* flex-flow: column; */
@@ -26,6 +25,7 @@
 }
 
 .Portada {
+  height: 88vh;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -68,7 +68,10 @@
 
 .Productos{
   width: 80%;
-  overflow: hidden;
+  height: 95vh;
+  /* overflow: hidden; */
+  padding-top: 20px;
+  padding-bottom: 20px;
   margin-bottom: 20px;
   background-color: #fff;
 }
@@ -80,14 +83,9 @@
 .Productos .CatalogoContainer{
   width: 100%;
   display: flex;
-  flex: 3;
-  /* flex-wrap: wrap; */
-  align-items: stretch;
-  /* justify-content: center; */
+  /* flex-wrap: nowrap; */
   overflow-x: scroll;
-  height: 70vh;
-  margin-top: 20px;
-  margin: auto;
+  /* margin-bottom: 200px; */
   padding: 0 25px;
 }
 

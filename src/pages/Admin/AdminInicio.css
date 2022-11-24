@@ -1,0 +1,20 @@
+.AdministrarContainer{
+  width: 100%;
+  padding: 0 25px;
+}
+
+.AdminPanelBody{
+  /* background-color: aqua; */
+  padding: 0px 30px;
+  /* width: 100%; */
+}
+
+.AdministrarPanel{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 35px;
+  /* width: 100%; */
+  /* padding: 0 15%; */
+  /* background-color: aqua; */
+}

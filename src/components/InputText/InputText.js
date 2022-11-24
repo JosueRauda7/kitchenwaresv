@@ -42,6 +42,14 @@ const InputText = (props) => {
     );
   }
 
+  if (props.type === "file") {
+    inputText = (
+      <div className='InputFile'>
+        <input type='file' onChange={props.onChange} {...props} />
+      </div>
+    );
+  }
+
   return (
     <div className='InputText'>
       {inputText}{" "}

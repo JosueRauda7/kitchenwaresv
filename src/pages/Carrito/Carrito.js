@@ -8,10 +8,9 @@ import { CarritoContext } from "../../contexts/CarritoContext";
 import NoImage from "../../assets/ItemExample.jpeg";
 import "./Carrito.css";
 import { urlImages } from "../../apiConfig";
-import Button from "../../components/Button/Button";
-import Delete from "@mui/icons-material/Delete";
 import Footer from "../../components/Footer/Footer";
 import { Link } from "react-router-dom";
+import ItemCarrito from "../../components/ItemCarrito/ItemCarrito";
 
 export const ResumenOrden = (props) => {
   return (
@@ -31,38 +30,6 @@ export const ResumenOrden = (props) => {
       <Link className='Button primary LinkButton LinkCard' to='/ordenar'>
         Pagar
       </Link>
-    </div>
-  );
-};
-
-export const CarritoItem = (props) => {
-  return (
-    <div className='CarritoItem'>
-      <div className='CarritoItemImagen'>
-        <img src={props.img} />
-      </div>
-      <div className='CarritoItemBody'>
-        <h2>{props.nombre}</h2>
-        <p>${props.precio} c/u</p>
-        <div className='Buttons'>
-          <p>Cantidad: </p>
-          <Button
-            type='primary ButtonPlus'
-            style={{ height: "2px" }}
-            onClick={props.handleMore}>
-            +
-          </Button>
-          <p className='CarritoCantidad'>{props.cantidad}</p>
-          <Button type='primary ButtonLess' onClick={props.handleLess}>
-            -
-          </Button>
-        </div>
-      </div>
-      <div className='CarritoItemBorrar'>
-        <Button type='primary ButtonDelete' onClick={props.deleteItem}>
-          <Delete fontSize='medium' />
-        </Button>
-      </div>
     </div>
   );
 };
@@ -111,12 +78,13 @@ const Cart = (props) => {
   const handleDeleteItem = (product) => {
     const nuevoCarrito = carrito.filter((p) => p._id !== product._id);
     setCarrito(nuevoCarrito);
+    setTotal(total - product.precio * product.cantidad);
   };
 
   const handleAskToDelete = (product) => {
     MySwal.fire({
       title: "¿Deseas eliminar este producto del carrito?",
-      text: `\"${product.nombre}\" ya no apareceraen el carrito.`,
+      text: `\"${product.nombre}\" ya no aparecera en el carrito.`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#0652DD",
@@ -147,7 +115,7 @@ const Cart = (props) => {
               </h2>
             ) : (
               carrito.map((producto, id) => (
-                <CarritoItem
+                <ItemCarrito
                   key={id}
                   style={{ marginTop: "20px" }}
                   nombre={producto.nombre}

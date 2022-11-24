@@ -1,17 +1,21 @@
-import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
 import "./Item.css";
 
 const Item = (props) => {
   return (
-    <div className='Item'>
-      <div className='Image'>
+    <div className={`Item`}>
+      <div
+        className={`Image ${
+          props.category ? "ImageCatalogo" : "ImageProducto"
+        }`}>
         <img src={props.img} />
       </div>
       <div className='Header'>
         <h3>{props.title}</h3>
-        {props.precio && <p className='Precio'>Precio: ${props.precio}</p>}
+        {props.precio ? (
+          <p className='Precio'>Precio: ${props.precio}</p>
+        ) : null}
       </div>
       {/* <div className='Body'>
         <p className='Descripcion'>
