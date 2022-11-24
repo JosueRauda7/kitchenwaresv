@@ -5,9 +5,7 @@ import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
 
 import Item from "../../components/Item/Item";
-import ItemImg from "../../assets/ItemExample.jpeg";
-// import ItemImg2 from "../../assets/ItemExample2.jpeg";
-// import ItemImg3 from "../../assets/ItemExample3.jpeg";
+import NotImg from "../../assets/NotImg.jpg";
 import "./Tienda.css";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import Footer from "../../components/Footer/Footer";
@@ -71,7 +69,7 @@ const Tienda = (props) => {
                 img={
                   producto.img
                     ? `${urlImages}/uploads/productos/${producto.img}`
-                    : ItemImg
+                    : NotImg
                 }
                 title={producto.nombre}
                 precio={producto.precio}
