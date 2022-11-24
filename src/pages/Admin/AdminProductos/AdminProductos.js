@@ -8,7 +8,7 @@ import Button from "../../../components/Button/Button";
 import Footer from "../../../components/Footer/Footer";
 import List from "../../../components/List/List";
 import PageTitle from "../../../components/PageTitle/PageTitle";
-import "../AdminColeccion.css";
+import "./AdminCategoria.css";
 
 const AdminCategoria = (props) => {
   const [categorias, setCategorias] = useState([]);
@@ -39,13 +39,13 @@ const AdminCategoria = (props) => {
   return (
     <>
       <div className='PageContainer'>
-        <div className='AdminColeccionContainer'>
+        <div className='AdminCatalogoContainer'>
           <PageTitle>Catalogos</PageTitle>
-          <div className='BodyAdminColeccion'>
-            <div className='ButtonNuevoColeccion'>
+          <div className='BodyAdminCatalogo'>
+            <div className='ButtonNuevoCatalogo'>
               <Link to='/administrar/categorias/agregar' className='LinkCover'>
                 <Button type='primary' icono={<AddBoxIcon fontSize='large' />}>
-                  Nueva Categoria
+                  Nuevo Catalogo
                 </Button>
               </Link>
             </div>
