@@ -1,6 +1,11 @@
 .Item {
+  /* flex: 1; */
+  /* width: 10%; */
   width: 27%;
-  margin: 20px;
+  min-width: 13%;
+  /* object-fit: cover; */
+  margin-right: 20px;
+  margin-bottom: 10px;
   display: flex;
   flex-flow: column;
   justify-content: space-between;
@@ -15,6 +20,14 @@
 
 .Item .Image{
   text-align: center;
+}
+
+.ImageProducto{
+  height: 40vh;
+}
+
+ImageCatalogo{
+  height: 30vh;
 }
 
 .Item .Header{

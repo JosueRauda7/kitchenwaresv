@@ -5,14 +5,17 @@
   height: auto;
   margin: 5px;
   display: flex;
-  flex-flow: column;
   align-items: center;
   justify-content: center;
   font-size: 15pt;
+  color: #eee;
+}
+
+.IconoButton {
+  margin-left: 10px;
 }
 
 .Button p{
-  color: #eee;
   font-weight: bolder;
   text-align: center;
 }
@@ -34,6 +37,18 @@
 .primary:active{
   background-image: none;
   background-color: #0652DD;
+}
+
+.danger{
+  background-color: #eb2f06;
+}
+
+.danger:hover{
+  background-color: #e64926;
+}
+
+.danger:active{
+  background-color: #bd2705;
 }
 
 .add {

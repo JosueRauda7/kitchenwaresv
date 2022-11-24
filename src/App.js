@@ -13,6 +13,8 @@ import Cart from "./pages/Carrito/Carrito";
 import Usuario from "./pages/Usuario/Usuario";
 import PageNotFound from "./pages/404Page/404Page";
 import Admin from "./pages/Admin/Admin";
+import AdminCategoria from "./pages/Admin/AdminCategorias/AdminCategoria";
+import FormularioCategoria from "./pages/Admin/AdminCategorias/FormularioCategoria";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
@@ -46,7 +48,21 @@ function App() {
           <Route path='/registrar' element={<Login showRegistrar />} />
           <Route path='/logout' element={<Logout />} />
           {rolUsuario === "ADMIN_ROL" && isLogged ? (
-            <Route path='/administrar' element={<Admin />} />
+            <>
+              <Route path='/administrar' element={<Admin />} />
+              <Route
+                path='/administrar/categorias'
+                element={<AdminCategoria />}
+              />
+              <Route
+                path='/administrar/categorias/agregar'
+                element={<FormularioCategoria />}
+              />
+              <Route
+                path='/administrar/categorias/edit'
+                element={<FormularioCategoria />}
+              />
+            </>
           ) : null}
           {isLogged ? <Route path='/profile' element={<Usuario />} /> : null}
           {isLogged ? (

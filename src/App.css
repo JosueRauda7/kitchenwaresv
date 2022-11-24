@@ -31,8 +31,11 @@ body{
   font-family: 'Raleway', sans-serif;
 }
 
-.Container {
+.PageContainer {
   margin-top: 12vh;
+  margin-bottom: 16vh;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .LinkButton, .LinkButton *{
@@ -41,6 +44,10 @@ body{
   height: inherit;
   width: inherit;
   /* font-weight: bold; */
+}
+
+.LinkCover{
+  text-decoration: none;
 }
 
 .LinkCard {

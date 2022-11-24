@@ -1,0 +1,43 @@
+.List{
+  width: 100%;
+  overflow-y: auto;
+}
+
+.List .HeaderList{
+  font-size: 1.2rem;
+  background-color: #003DD4;
+  color: aliceblue;
+  height: 5vh;
+}
+
+.List tr {
+  font-size: 16pt;
+  text-align: center;
+  max-height: 15vh
+}
+
+.List tr:nth-child(2n){
+  background-color: #efefef;
+}
+
+.ImgList{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ImgList img {
+  width: auto;
+  height: 15vh;
+  margin: 0;
+}
+
+.OperacionesList{
+  display: flex;
+  width: 45%;
+  margin: 0 30%;
+}
+
+.OperacionesList .OperacionLink{
+  margin-right: 15px;
+}

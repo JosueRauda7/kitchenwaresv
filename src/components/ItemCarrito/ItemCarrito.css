@@ -1,0 +1,58 @@
+.CarritoItem {
+  margin-top: 20px;
+  display: flex;
+  border: 0.5 solid black;
+  background-color: #efefef;
+}
+
+.CarritoItem .CarritoItemBody {
+  padding: 10px 0;
+  width: 85%;
+}
+
+.CarritoItem .CarritoItemBody p {
+  font-weight: bold;
+  font-size: 15pt;
+}
+
+.CarritoItem .CarritoItemBody .Buttons {
+  display: flex;
+  align-items: center;
+}
+
+.CarritoItem .CarritoItemBody h2 {
+  font-size: 20pt;
+  margin-bottom: 10px;
+}
+
+.CarritoItem .CarritoItemImagen {
+  max-width: 18%;
+  margin-right: 20px;
+}
+
+.CarritoItem .CarritoItemImagen img {
+  max-width: 100%;
+}
+
+.ButtonPlus,
+.ButtonLess {
+  padding: 5px;
+  width: 40px;
+  font-size: 20pt;
+}
+
+.CarritoCantidad {
+  width: 40px;
+  text-align: center;
+}
+
+.CarritoItemBorrar {
+  position: relative;
+  width: 5%;
+}
+
+.ButtonDelete {
+  position: absolute;
+  top: 0;
+  right: 0;
+}

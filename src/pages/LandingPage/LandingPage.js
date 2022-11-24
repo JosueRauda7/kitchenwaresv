@@ -3,14 +3,14 @@ import Button from "../../components/Button/Button";
 import Card from "../../components/Card/Card";
 import { Link } from "react-router-dom";
 
-import NoImage from "../../assets/tupper.jpg";
+import NoImage from "../../assets/NotImg.jpg";
 
 import Tupperware from "../../assets/tupperware.png";
 import Renaware from "../../assets/renaware.png";
 import Footer from "../../components/Footer/Footer";
 import { useEffect, useState } from "react";
 import axios from "axios";
-import { baseUrl } from "../../apiConfig";
+import { baseUrl, urlImages } from "../../apiConfig";
 import Item from "../../components/Item/Item";
 
 const LandingPage = (props) => {
@@ -55,13 +55,18 @@ const LandingPage = (props) => {
               return (
                 <Item
                   key={cat._id}
-                  img={cat.img || NoImage}
+                  img={
+                    cat.img
+                      ? `${urlImages}/uploads/categorias/${cat.img}`
+                      : NoImage
+                  }
                   titleButton='Ver productos'
                   to={`/tienda/${cat.nombre
                     .toLowerCase()
                     .split(" ")
                     .join("-")}?categoria=${cat._id}`}
                   title={cat.nombre}
+                  category
                 />
               );
             })

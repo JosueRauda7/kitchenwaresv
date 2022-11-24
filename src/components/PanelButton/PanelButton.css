@@ -1,0 +1,13 @@
+.PanelButton{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-right: 25px;
+  font-weight: bold;
+  padding: 40px;
+  font-size: 2rem;
+  height: 50vh;
+  width: 25%;
+  text-align: center;
+}

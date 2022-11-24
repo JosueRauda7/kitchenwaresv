@@ -34,7 +34,7 @@ const Usuario = (props) => {
             <h2 className='UsernameUsuario'>{usuario}</h2>
             <p className='CorreoUsuario'>{usuarioInfo.correo}</p>
             <Link
-              to={`/${usuario}/edit`}
+              to={`/profile/edit`}
               className='Button primary LinkCard LinkButton EditProfileButton'>
               Editar Perfil
             </Link>
@@ -43,6 +43,7 @@ const Usuario = (props) => {
             <PageTitle>Hola, {usuario}</PageTitle>
             <div className='DatosUsuarioBody'>
               <h1 className='h1DatosUsuario'>Pagos</h1>
+              <h3>No se han realizado pagos.</h3>
             </div>
           </div>
         </div>

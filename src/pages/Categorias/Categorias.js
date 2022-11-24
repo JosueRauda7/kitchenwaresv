@@ -10,7 +10,7 @@ import Dashboard from "../../components/Dashboard/Dashboard";
 import Footer from "../../components/Footer/Footer";
 import Item from "../../components/Item/Item";
 import PageTitle from "../../components/PageTitle/PageTitle";
-import ItemImg from "../../assets/ItemExample.jpeg";
+import NotImg from "../../assets/NotImg.jpg";
 import { CarritoContext } from "../../contexts/CarritoContext";
 
 const Categorias = (props) => {
@@ -79,7 +79,7 @@ const Categorias = (props) => {
                   img={
                     producto.img
                       ? `${urlImages}/uploads/productos/${producto.img}`
-                      : ItemImg
+                      : NotImg
                   }
                   title={producto.nombre}
                   precio={producto.precio}
