@@ -9,7 +9,7 @@ import Logo from "../../assets/logo_positivo.png";
 import Button from "../../components/Button/Button";
 import ErrorMessageBox from "../../components/ErrorMessageBox/ErrorMessageBox";
 import { UsuarioContext } from "../../contexts/UsuarioContext";
-import { baseUrl } from "../../apiConfig";
+import { baseUrl, urlImages } from "../../apiConfig";
 
 const Login = (props) => {
   const { isLogged, setIsLogged, setUsuario, setRolUsuario, setImgUsuario } =
@@ -18,9 +18,11 @@ const Login = (props) => {
   const [username, setUsername] = useState("");
   const [email1, setEmail1] = useState("");
   const [email2, setEmail2] = useState("");
+  const [imagenUsuario, setImagenUsuario] = useState(null);
   const [password, setPassword] = useState("");
   const [errorUsername, setErrorUsername] = useState(null);
   const [errorEmail, setErrorEmail] = useState(null);
+  const [errorImgUsuario, setErrorImgUsuario] = useState("");
   const [errorPassword, setErrorPassword] = useState(null);
 
   useEffect(() => {
@@ -88,6 +90,11 @@ const Login = (props) => {
     setEmail2(e.target.value);
   };
 
+  const handleSetImgUsuario = (e) => {
+    setErrorImgUsuario("");
+    setImagenUsuario(e.target.files[0]);
+  };
+
   const handleSetPassword = (e) => {
     setErrorPassword("");
     setPassword(e.target.value);
@@ -116,8 +123,30 @@ const Login = (props) => {
         const nombreUsuario = res.data.body.usuario.usuario.username;
         localStorage.setItem("token", token);
         localStorage.setItem("username", nombreUsuario);
+
+        if (imagenUsuario !== null) {
+          const idUsuario = res.data.body.usuario.usuario.uid;
+          const formData = new FormData();
+          formData.append("archivo", imagenUsuario, imagenUsuario.name);
+
+          // Añadimos Imagen al producto
+          const usuarioActualizado = await axios.put(
+            `${baseUrl}/uploads/usuarios/${idUsuario}`,
+            formData,
+            {
+              headers: {
+                "x-token": token,
+              },
+            }
+          );
+          setImgUsuario(usuarioActualizado.data.modelo.usuario.img);
+          setIsLogged(true);
+        }
+
         setUsuario(nombreUsuario);
-        setIsLogged(true);
+        if (!imagenUsuario) {
+          setIsLogged(true);
+        }
       }
     } catch (error) {
       validarErrores(error);
@@ -239,6 +268,18 @@ const Login = (props) => {
                 />
               </div>
               <div className='InputContainer'>
+                <h2>*Imagen de Perfil:</h2>
+                <InputText
+                  type='file'
+                  // value={imagenCatalogo.name}
+                  onChange={handleSetImgUsuario}
+                  justify='center'
+                  onKeyDown={handlePressEnter}
+                  error={errorImgUsuario}
+                  nombreArchivo={imagenUsuario}
+                />
+              </div>
+              <div className='InputContainer'>
                 <h2>Contraseña:</h2>
                 <InputText
                   type='password'
@@ -249,7 +290,8 @@ const Login = (props) => {
                   error={errorPassword}
                 />
               </div>
-
+              <br />
+              <h3>Nota: (*) es opcional su valor.</h3>
               <Button onClick={handleRegistrar} type='primary'>
                 Registrarse
               </Button>

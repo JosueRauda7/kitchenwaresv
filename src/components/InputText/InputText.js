@@ -1,5 +1,6 @@
 import "./InputText.css";
 import SearchIcon from "@mui/icons-material/Search";
+// import Button from "../Button/Button";
 import ErrorMessageBox from "../ErrorMessageBox/ErrorMessageBox";
 
 const InputText = (props) => {
@@ -50,7 +51,21 @@ const InputText = (props) => {
   if (props.type === "file") {
     inputText = (
       <div className='InputFile'>
-        <input type='file' onChange={props.onChange} {...props} />
+        <input
+          type='file'
+          className='InputFileButton'
+          id='subirArchivo'
+          onChange={props.onChange}
+          {...props}
+        />
+        <label className=' Button primary' for='subirArchivo'>
+          Subir Archivo
+        </label>
+        <p className='archivoCargado'>
+          {props.nombreArchivo
+            ? `Archivo cargado: ${props.nombreArchivo.name}`
+            : ""}
+        </p>
       </div>
     );
   }

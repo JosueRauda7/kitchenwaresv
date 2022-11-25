@@ -255,7 +255,7 @@ const FormularioProducto = (props) => {
               />
             </div>
             <div className='InputContainer'>
-              <h2>Imagen de Producto:</h2>
+              <h2>*Imagen de Producto:</h2>
               <InputText
                 type='file'
                 // value={imagenCatalogo.name}
@@ -263,6 +263,7 @@ const FormularioProducto = (props) => {
                 justify='center'
                 onKeyDown={handlePressEnter}
                 error={errorImgProducto}
+                nombreArchivo={imagenProducto}
               />
             </div>
             <div className='InputContainer'>
@@ -284,6 +285,8 @@ const FormularioProducto = (props) => {
             {errorImgCatalogo ? (
               <ErrorMessageBox>{errorImgCatalogo}</ErrorMessageBox>
             ) : null} */}
+            <br />
+            <h3>Nota: (*) es opcional su valor.</h3>
             <div className='Buttons'>
               <Button
                 onClick={!producto ? handleAddNewProducto : handleEditProducto}

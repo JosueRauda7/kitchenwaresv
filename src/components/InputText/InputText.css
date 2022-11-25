@@ -20,6 +20,24 @@
   text-align: center;
 }
 
+.InputFile{
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  font-weight: bold;
+}
+
+.InputFileButton{
+  /* display:none; */
+  position: absolute;
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  z-index: -1;
+  /* background-color: #003DD4; */
+}
+
 .InputSearch, .InputSelect{
   display: flex;
   justify-content: center;

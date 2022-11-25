@@ -180,6 +180,7 @@ const FormularioCategoria = (props) => {
                 justify='center'
                 onKeyDown={handlePressEnter}
                 error={errorImgCategoria}
+                nombreArchivo={imagenCategoria}
               />
             </div>
             {/* {errorNombreCatalogo ? (
