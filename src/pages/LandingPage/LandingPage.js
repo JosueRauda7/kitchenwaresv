@@ -12,14 +12,17 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 import { baseUrl, urlImages } from "../../apiConfig";
 import Item from "../../components/Item/Item";
+import Loading from "../../components/Loading/Loading";
 
 const LandingPage = (props) => {
   const [categorias, setCategorias] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getCategorias = async () => {
       const res = await axios.get(`${baseUrl}/categorias?limit=10`);
       setCategorias(res.data.body.categorias);
+      setIsLoading(false);
     };
     getCategorias();
   }, []);
@@ -46,7 +49,9 @@ const LandingPage = (props) => {
           <h3>¡Visita nuestra Tienda!</h3>
         </div>
         <div className='CatalogoContainer'>
-          {!categorias ? (
+          {isLoading ? (
+            <Loading />
+          ) : !categorias ? (
             <h2 style={{ marginTop: "20px" }}>
               No se encuentran productos de esta categoria.
             </h2>

@@ -12,11 +12,13 @@ import Footer from "../../components/Footer/Footer";
 import Dashboard from "../../components/Dashboard/Dashboard";
 import { CarritoContext } from "../../contexts/CarritoContext";
 import { urlImages, baseUrl } from "../../apiConfig";
+import Loading from "../../components/Loading/Loading";
 
 const Tienda = (props) => {
   // const [isShowModal, setShowModal] = useState(false);
   const [productos, setProductos] = useState([]);
   const { carrito, setCarrito } = useContext(CarritoContext);
+  const [isLoading, setIsLoading] = useState(true);
   const MySwal = withReactContent(Swal);
 
   // Get de productos
@@ -25,6 +27,7 @@ const Tienda = (props) => {
       const url = `${baseUrl}/productos`;
       const productosItems = await axios.get(url);
       setProductos(productosItems.data.body.productos);
+      setIsLoading(false);
     };
     getProductos();
   }, []);
@@ -63,20 +66,24 @@ const Tienda = (props) => {
         <div className='TiendaContainer'>
           <PageTitle>Productos</PageTitle>
           <div className='itemContainer'>
-            {productos.map((producto, id) => (
-              <Item
-                key={id}
-                img={
-                  producto.img
-                    ? `${urlImages}/uploads/productos/${producto.img}`
-                    : NotImg
-                }
-                title={producto.nombre}
-                precio={producto.precio}
-                titleButton='Añadir al carrito'
-                onClick={() => handleAnidarCarrito(producto)}
-              />
-            ))}
+            {isLoading ? (
+              <Loading />
+            ) : (
+              productos.map((producto, id) => (
+                <Item
+                  key={id}
+                  img={
+                    producto.img
+                      ? `${urlImages}/uploads/productos/${producto.img}`
+                      : NotImg
+                  }
+                  title={producto.nombre}
+                  precio={producto.precio}
+                  titleButton='Añadir al carrito'
+                  onClick={() => handleAnidarCarrito(producto)}
+                />
+              ))
+            )}
           </div>
         </div>
       </div>

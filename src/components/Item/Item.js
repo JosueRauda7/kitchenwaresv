@@ -14,7 +14,7 @@ const Item = (props) => {
       <div className='Header'>
         <h3>{props.title}</h3>
         {props.precio ? (
-          <p className='Precio'>Precio: ${props.precio}</p>
+          <p className='Precio'>Precio: ${props.precio.toFixed(2)}</p>
         ) : null}
       </div>
       {/* <div className='Body'>

@@ -24,14 +24,14 @@ const AdminProductos = (props) => {
 
   useEffect(() => {
     setIsLoading(true);
+    getProductos();
     const cargarCategorias = async () => {
       const res3 = await axios.get(`${baseUrl}/categorias`);
       const categories = await res3.data.body.categorias;
       setCategorias(categories);
+      setIsLoading(false);
     };
     cargarCategorias();
-    getProductos();
-    setIsLoading(false);
   }, []);
 
   const handleEnviado = () => {

@@ -12,26 +12,24 @@ import "../AdminColeccion.css";
 
 const AdminCategoria = (props) => {
   const [categorias, setCategorias] = useState([]);
-  const [reload, setReload] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const getCategorias = async () => {
       const url = `${baseUrl}/categorias?limit=15`;
       const res = await axios.get(url);
       setCategorias(res.data.body.categorias);
+      setIsLoading(false);
     };
     getCategorias();
   }, []);
-
-  const handleReload = () => {
-    setReload(true);
-  };
 
   const handleEnviado = () => {
     const getCategorias = async () => {
       const url = `${baseUrl}/categorias?limit=15`;
       const res = await axios.get(url);
       setCategorias(res.data.body.categorias);
+      setIsLoading(false);
     };
     getCategorias();
   };
@@ -51,9 +49,9 @@ const AdminCategoria = (props) => {
             </div>
             <div className='TableCatalogo'>
               <List
+                isLoading={isLoading}
                 header={["Imagen", "Nombre", "Operaciones"]}
                 categorias={categorias}
-                setReload={handleReload}
                 handleEnviado={handleEnviado}
               />
             </div>

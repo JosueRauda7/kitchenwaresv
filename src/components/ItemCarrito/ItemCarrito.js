@@ -11,7 +11,7 @@ const ItemCarrito = (props) => {
       </div>
       <div className='CarritoItemBody'>
         <h2>{props.nombre}</h2>
-        <p>${props.precio} c/u</p>
+        <p>${props.precio.toFixed(2)} c/u</p>
         <div className='Buttons'>
           <p>Cantidad: </p>
           <Button

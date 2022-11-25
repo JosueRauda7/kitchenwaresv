@@ -9,10 +9,12 @@ import "./List.css";
 import axios from "axios";
 import { baseUrl, urlImages } from "../../apiConfig";
 import { Link } from "react-router-dom";
+import Loading from "../Loading/Loading";
 
 const List = (props) => {
   const MySwal = withReactContent(Swal);
   let coleccionItem = ["", "", ""];
+  let loading = <Loading />;
 
   if (props.categorias) {
     coleccionItem = ["Categoria", "categoria", "categorias"];
@@ -61,97 +63,36 @@ const List = (props) => {
   };
 
   return (
-    <table className='List'>
-      <thead>
-        <tr className='HeaderList'>
-          {props.header.map((h, index) => {
-            return <th key={index}>{h}</th>;
-          })}
-        </tr>
-      </thead>
-      <tbody>
-        {props.categorias &&
-          props.categorias.map((c, index) => {
-            return (
-              <tr key={index}>
-                <td className='ImgList'>
-                  <img
-                    src={
-                      c.img
-                        ? `${urlImages}/uploads/categorias/${c.img}`
-                        : NotImg
-                    }
-                    alt={c.nombre}
-                  />
-                </td>
-                <td>{c.nombre}</td>
-                <td>
-                  <div className='OperacionesList'>
-                    <Link
-                      className='LinkCover LinkCard OperacionLink'
-                      to={`/administrar/categorias/edit?categoria=${c._id}`}>
-                      <Button
-                        type='primary'
-                        onlyIcon
-                        icono={<EditIcon fontSize='medium' />}
-                      />
-                    </Link>
-                    <div>
-                      <Button
-                        type='danger'
-                        onlyIcon
-                        onClick={() => handleAskToDelete(c)}
-                        icono={<DeleteIcon fontSize='medium' />}
-                      />
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            );
-          })}
-        {props.productos ? (
-          props.isLoading ? (
-            <h1>Cargando...</h1>
-          ) : (
-            props.productos.map((p, index) => {
+    <>
+      <table className='List'>
+        <thead>
+          <tr className='HeaderList'>
+            {props.header.map((h, index) => {
+              return <th key={index}>{h}</th>;
+            })}
+          </tr>
+        </thead>
+        <tbody>
+          {props.categorias &&
+            props.categorias.map((c, index) => {
               return (
                 <tr key={index}>
                   <td className='ImgList'>
                     <img
                       src={
-                        p.img
-                          ? `${urlImages}/uploads/productos/${p.img}`
+                        c.img
+                          ? `${urlImages}/uploads/categorias/${c.img}`
                           : NotImg
                       }
-                      alt={p.nombre}
+                      alt={c.nombre}
                     />
                   </td>
-                  <td>{p.nombre}</td>
-                  <td>{p.descripcion}</td>
-                  <td>
-                    {!p.detalles
-                      ? "No hay detalles"
-                      : Object.keys(p.detalles, index).map((variable) => (
-                          <p
-                            key={
-                              index
-                            }>{`${variable}: ${p.detalles[variable]}`}</p>
-                        ))}
-                  </td>
-                  <td>${p.precio}</td>
-                  <td>
-                    {
-                      props.categoriasProductos.filter((c) => {
-                        return c._id === p.categoria;
-                      })[0].nombre
-                    }
-                  </td>
-                  {/* <td>{p.nombreCategoria}</td> */}
+                  <td>{c.nombre}</td>
                   <td>
                     <div className='OperacionesList'>
                       <Link
                         className='LinkCover LinkCard OperacionLink'
-                        to={`/administrar/productos/edit?producto=${p._id}`}>
+                        to={`/administrar/categorias/edit?categoria=${c._id}`}>
                         <Button
                           type='primary'
                           onlyIcon
@@ -162,7 +103,7 @@ const List = (props) => {
                         <Button
                           type='danger'
                           onlyIcon
-                          onClick={() => handleAskToDelete(p)}
+                          onClick={() => handleAskToDelete(c)}
                           icono={<DeleteIcon fontSize='medium' />}
                         />
                       </div>
@@ -170,11 +111,71 @@ const List = (props) => {
                   </td>
                 </tr>
               );
-            })
-          )
-        ) : null}
-      </tbody>
-    </table>
+            })}
+          {props.productos && !props.isLoading
+            ? props.productos.map((p, index) => {
+                return (
+                  <tr key={index}>
+                    <td className='ImgList'>
+                      <img
+                        src={
+                          p.img
+                            ? `${urlImages}/uploads/productos/${p.img}`
+                            : NotImg
+                        }
+                        alt={p.nombre}
+                      />
+                    </td>
+                    <td>{p.nombre}</td>
+                    <td>{p.descripcion}</td>
+                    <td>
+                      {!p.detalles
+                        ? "No hay detalles"
+                        : Object.keys(p.detalles, index).map((variable) => (
+                            <p
+                              key={
+                                index
+                              }>{`${variable}: ${p.detalles[variable]}`}</p>
+                          ))}
+                    </td>
+                    <td>${p.precio.toFixed(2)}</td>
+                    <td>
+                      {
+                        props.categoriasProductos.filter((c) => {
+                          return c._id === p.categoria;
+                        })[0].nombre
+                      }
+                    </td>
+                    {/* <td>{p.nombreCategoria}</td> */}
+                    <td>
+                      <div className='OperacionesList'>
+                        <Link
+                          className='LinkCover LinkCard OperacionLink'
+                          to={`/administrar/productos/edit?producto=${p._id}`}>
+                          <Button
+                            type='primary'
+                            onlyIcon
+                            icono={<EditIcon fontSize='medium' />}
+                          />
+                        </Link>
+                        <div>
+                          <Button
+                            type='danger'
+                            onlyIcon
+                            onClick={() => handleAskToDelete(p)}
+                            icono={<DeleteIcon fontSize='medium' />}
+                          />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            : null}
+        </tbody>
+      </table>
+      {props.isLoading && loading}
+    </>
   );
 };
 

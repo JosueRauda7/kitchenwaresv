@@ -2,11 +2,13 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { baseUrl } from "../../apiConfig";
 import InputText from "../InputText/InputText";
+import Loading from "../Loading/Loading";
 import "./Dashboard.css";
 import ItemSelect from "./ItemSelect";
 
 const Dashboard = (props) => {
   const [categorias, setCategorias] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   let onSelectCategory = props.onSelectCategory;
 
   useEffect(() => {
@@ -14,6 +16,7 @@ const Dashboard = (props) => {
       const url = `${baseUrl}/categorias?limit=15`;
       const res = await axios.get(url);
       setCategorias(res.data.body.categorias);
+      setIsLoading(false);
     };
     getCategorias();
   }, []);
@@ -31,7 +34,9 @@ const Dashboard = (props) => {
       />
       <div>
         <h2>Categorias</h2>
-        {!categorias ? (
+        {isLoading ? (
+          <Loading bg='white' />
+        ) : !categorias ? (
           <p className='DashBoardNoCategorias'>No hay categorias disponibles</p>
         ) : (
           categorias.map((cat) => (

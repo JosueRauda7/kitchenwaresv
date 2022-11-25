@@ -12,10 +12,12 @@ import Item from "../../components/Item/Item";
 import PageTitle from "../../components/PageTitle/PageTitle";
 import NotImg from "../../assets/NotImg.jpg";
 import { CarritoContext } from "../../contexts/CarritoContext";
+import Loading from "../../components/Loading/Loading";
 
 const Categorias = (props) => {
   const [categoria, setCategoria] = useState({});
   const [productos, setProductos] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
   const { carrito, setCarrito } = useContext(CarritoContext);
   const { search } = useLocation();
   const categoriaIndexSearch = search.indexOf("categoria");
@@ -25,6 +27,7 @@ const Categorias = (props) => {
     const res = await axios.get(url);
     setCategoria(res.data.body.categoria);
     setProductos(res.data.body.categoria.productos);
+    setIsLoading(false);
   };
   const MySwal = withReactContent(Swal);
 
@@ -72,6 +75,8 @@ const Categorias = (props) => {
               <h2 style={{ marginTop: "20px" }}>
                 No se encuentran productos de esta categoria.
               </h2>
+            ) : isLoading ? (
+              <Loading />
             ) : (
               productos.map((producto, id) => (
                 <Item
