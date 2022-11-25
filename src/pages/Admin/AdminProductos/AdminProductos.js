@@ -8,52 +8,66 @@ import Button from "../../../components/Button/Button";
 import Footer from "../../../components/Footer/Footer";
 import List from "../../../components/List/List";
 import PageTitle from "../../../components/PageTitle/PageTitle";
-import "./AdminCategoria.css";
+import "../AdminColeccion.css";
 
-const AdminCategoria = (props) => {
+const AdminProductos = (props) => {
+  const [productos, setProductos] = useState([]);
   const [categorias, setCategorias] = useState([]);
-  const [reload, setReload] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
-  useEffect(() => {
-    const getCategorias = async () => {
-      const url = `${baseUrl}/categorias?limit=15`;
-      const res = await axios.get(url);
-      setCategorias(res.data.body.categorias);
-    };
-    getCategorias();
-  }, []);
-
-  const handleReload = () => {
-    setReload(true);
+  const getProductos = async () => {
+    const url = `${baseUrl}/productos?limit=15`;
+    const res = await axios.get(url);
+    const prods = res.data.body.productos;
+    setProductos(prods);
   };
 
   useEffect(() => {
-    const getCategorias = async () => {
-      const url = `${baseUrl}/categorias?limit=15`;
-      const res = await axios.get(url);
-      setCategorias(res.data.body.categorias);
+    setIsLoading(true);
+    const cargarCategorias = async () => {
+      const res3 = await axios.get(`${baseUrl}/categorias`);
+      const categories = await res3.data.body.categorias;
+      setCategorias(categories);
     };
-    getCategorias();
-  }, [handleReload]);
+    cargarCategorias();
+    getProductos();
+    setIsLoading(false);
+  }, []);
+
+  const handleEnviado = () => {
+    setIsLoading(true);
+    getProductos();
+    setIsLoading(false);
+  };
 
   return (
     <>
       <div className='PageContainer'>
-        <div className='AdminCatalogoContainer'>
-          <PageTitle>Catalogos</PageTitle>
-          <div className='BodyAdminCatalogo'>
-            <div className='ButtonNuevoCatalogo'>
-              <Link to='/administrar/categorias/agregar' className='LinkCover'>
+        <div className='AdminColeccionContainer'>
+          <PageTitle>Productos</PageTitle>
+          <div className='BodyAdminColeccion'>
+            <div className='ButtonNuevoColeccion'>
+              <Link to='/administrar/productos/agregar' className='LinkCover'>
                 <Button type='primary' icono={<AddBoxIcon fontSize='large' />}>
-                  Nuevo Catalogo
+                  Nuevo Producto
                 </Button>
               </Link>
             </div>
             <div className='TableCatalogo'>
               <List
-                header={["Imagen", "Nombre", "Operaciones"]}
-                categorias={categorias}
-                setReload={handleReload}
+                isLoading={isLoading}
+                header={[
+                  "Imagen",
+                  "Nombre",
+                  "Descripción",
+                  "Detalles",
+                  "Precio",
+                  "Categoria",
+                  "Operaciones",
+                ]}
+                handleEnviado={handleEnviado}
+                productos={productos}
+                categoriasProductos={categorias}
               />
             </div>
           </div>
@@ -64,4 +78,4 @@ const AdminCategoria = (props) => {
   );
 };
 
-export default AdminCategoria;
+export default AdminProductos;

@@ -8,8 +8,6 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import "./List.css";
 import axios from "axios";
 import { baseUrl, urlImages } from "../../apiConfig";
-import { useState } from "react";
-import { Navigate } from "react-router";
 import { Link } from "react-router-dom";
 
 const List = (props) => {
@@ -46,7 +44,7 @@ const List = (props) => {
           `${coleccion.nombre} se ha removido.`,
           "success"
         );
-        props.setReload();
+        props.handleEnviado();
       }
     });
   };
@@ -98,17 +96,80 @@ const List = (props) => {
                         icono={<EditIcon fontSize='medium' />}
                       />
                     </Link>
-                    <Button
-                      type='danger'
-                      onlyIcon
-                      onClick={() => handleAskToDelete(c)}
-                      icono={<DeleteIcon fontSize='medium' />}
-                    />
+                    <div>
+                      <Button
+                        type='danger'
+                        onlyIcon
+                        onClick={() => handleAskToDelete(c)}
+                        icono={<DeleteIcon fontSize='medium' />}
+                      />
+                    </div>
                   </div>
                 </td>
               </tr>
             );
           })}
+        {props.productos ? (
+          props.isLoading ? (
+            <h1>Cargando...</h1>
+          ) : (
+            props.productos.map((p, index) => {
+              return (
+                <tr key={index}>
+                  <td className='ImgList'>
+                    <img
+                      src={
+                        p.img
+                          ? `${urlImages}/uploads/productos/${p.img}`
+                          : NotImg
+                      }
+                      alt={p.nombre}
+                    />
+                  </td>
+                  <td>{p.nombre}</td>
+                  <td>{p.descripcion}</td>
+                  <td>
+                    {!p.detalles
+                      ? "No hay detalles"
+                      : Object.keys(p.detalles).map((variable) => (
+                          <p>{`${variable}: ${p.detalles[variable]}`}</p>
+                        ))}
+                  </td>
+                  <td>${p.precio}</td>
+                  <td>
+                    {
+                      props.categoriasProductos.filter((c) => {
+                        return c._id === p.categoria;
+                      })[0].nombre
+                    }
+                  </td>
+                  {/* <td>{p.nombreCategoria}</td> */}
+                  <td>
+                    <div className='OperacionesList'>
+                      <Link
+                        className='LinkCover LinkCard OperacionLink'
+                        to={`/administrar/productos/edit?producto=${p._id}`}>
+                        <Button
+                          type='primary'
+                          onlyIcon
+                          icono={<EditIcon fontSize='medium' />}
+                        />
+                      </Link>
+                      <div>
+                        <Button
+                          type='danger'
+                          onlyIcon
+                          onClick={() => handleAskToDelete(p)}
+                          icono={<DeleteIcon fontSize='medium' />}
+                        />
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              );
+            })
+          )
+        ) : null}
       </tbody>
     </table>
   );

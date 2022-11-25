@@ -27,14 +27,14 @@ const AdminCategoria = (props) => {
     setReload(true);
   };
 
-  useEffect(() => {
+  const handleEnviado = () => {
     const getCategorias = async () => {
       const url = `${baseUrl}/categorias?limit=15`;
       const res = await axios.get(url);
       setCategorias(res.data.body.categorias);
     };
     getCategorias();
-  }, [handleReload]);
+  };
 
   return (
     <>
@@ -54,6 +54,7 @@ const AdminCategoria = (props) => {
                 header={["Imagen", "Nombre", "Operaciones"]}
                 categorias={categorias}
                 setReload={handleReload}
+                handleEnviado={handleEnviado}
               />
             </div>
           </div>

@@ -24,9 +24,18 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid #8f8ad6;
-  border-radius: 9px;
   padding: 0 5px;
+}
+
+.InputSelect{
+  color: #0c0c0c;
+  background-color: #fff;
+  border: 1px solid #0c0c0c;
+}
+
+.InputSearch{
+  border: 1px solid #fff;
+  border-radius: 9px;
   color: #fff;
   background-color: rgb(35, 17, 126, 0.3);
 }
@@ -60,8 +69,8 @@
 
 .InputSelect select option {
   cursor: pointer;
-  color: #fff;
-  background-color: rgb(35, 17, 126);
+  color: #0c0c0c;
+  background-color: #fff;
 }
 
 .InputSelect select option:hover {

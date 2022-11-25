@@ -34,10 +34,11 @@
 
 .OperacionesList{
   display: flex;
-  width: 45%;
-  margin: 0 30%;
+  justify-content: center;
+  align-items: center;
+  /* width: 100%; */
 }
 
-.OperacionesList .OperacionLink{
-  margin-right: 15px;
+.OperacionLink{
+  margin-right: 5px;
 }

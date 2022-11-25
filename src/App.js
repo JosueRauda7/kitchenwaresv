@@ -15,6 +15,8 @@ import PageNotFound from "./pages/404Page/404Page";
 import Admin from "./pages/Admin/Admin";
 import AdminCategoria from "./pages/Admin/AdminCategorias/AdminCategoria";
 import FormularioCategoria from "./pages/Admin/AdminCategorias/FormularioCategoria";
+import AdminProductos from "./pages/Admin/AdminProductos/AdminProductos";
+import FormularioProducto from "./pages/Admin/AdminProductos/FormularioProducto";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
@@ -50,6 +52,7 @@ function App() {
           {rolUsuario === "ADMIN_ROL" && isLogged ? (
             <>
               <Route path='/administrar' element={<Admin />} />
+              {/* Categorias */}
               <Route
                 path='/administrar/categorias'
                 element={<AdminCategoria />}
@@ -61,6 +64,19 @@ function App() {
               <Route
                 path='/administrar/categorias/edit'
                 element={<FormularioCategoria />}
+              />
+              {/* Productos */}
+              <Route
+                path='/administrar/productos'
+                element={<AdminProductos />}
+              />
+              <Route
+                path='/administrar/productos/agregar'
+                element={<FormularioProducto />}
+              />
+              <Route
+                path='/administrar/productos/edit'
+                element={<FormularioProducto />}
               />
             </>
           ) : null}

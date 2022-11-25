@@ -32,10 +32,15 @@ const InputText = (props) => {
       <div className='InputSelect'>
         <select
           placeholder={props.placeholder}
-          className={`${props.justify}`}
-          name={props.nombreLista}>
+          onChange={props.onChange}
+          className={`${props.justify}`}>
           {props.lista.map((op) => (
-            <option value={op}>{op}</option>
+            <option
+              key={op._id}
+              value={op._id}
+              selected={op._id === props.selected}>
+              {op.nombre}
+            </option>
           ))}
         </select>
       </div>
