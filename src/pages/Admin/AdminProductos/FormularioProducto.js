@@ -55,6 +55,7 @@ const FormularioProducto = (props) => {
       const res3 = await axios.get(`${baseUrl}/categorias`);
       const categories = await res3.data.body.categorias;
       setCategorias(categories);
+      setCategoriaIdProducto(categories[0]._id);
     };
     cargarCategorias();
     // }

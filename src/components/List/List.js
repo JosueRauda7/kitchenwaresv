@@ -131,8 +131,11 @@ const List = (props) => {
                   <td>
                     {!p.detalles
                       ? "No hay detalles"
-                      : Object.keys(p.detalles).map((variable) => (
-                          <p>{`${variable}: ${p.detalles[variable]}`}</p>
+                      : Object.keys(p.detalles, index).map((variable) => (
+                          <p
+                            key={
+                              index
+                            }>{`${variable}: ${p.detalles[variable]}`}</p>
                         ))}
                   </td>
                   <td>${p.precio}</td>
