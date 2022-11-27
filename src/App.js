@@ -17,6 +17,8 @@ import AdminCategoria from "./pages/Admin/AdminCategorias/AdminCategoria";
 import FormularioCategoria from "./pages/Admin/AdminCategorias/FormularioCategoria";
 import AdminProductos from "./pages/Admin/AdminProductos/AdminProductos";
 import FormularioProducto from "./pages/Admin/AdminProductos/FormularioProducto";
+import EditarUsuario from "./pages/Usuario/EditarUsuario";
+import Producto from "./pages/Producto/Producto";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
@@ -45,6 +47,10 @@ function App() {
           <Route path='/' element={<LandingPage />} />
           <Route path='/tienda' element={<Tienda />} />
           <Route path='/tienda/:categoriaNombre' element={<Categorias />} />
+          <Route
+            path='/tienda/productos/:productoNombre'
+            element={<Producto />}
+          />
           <Route path='/cart' element={<Cart />} />
           <Route path='/login' element={<Login />} />
           <Route path='/registrar' element={<Login showRegistrar />} />
@@ -82,7 +88,7 @@ function App() {
           ) : null}
           {isLogged ? <Route path='/profile' element={<Usuario />} /> : null}
           {isLogged ? (
-            <Route path='/profile/edit' element={<Usuario />} />
+            <Route path='/profile/edit' element={<EditarUsuario />} />
           ) : null}
           <Route path='*' element={<PageNotFound />} />
         </Routes>

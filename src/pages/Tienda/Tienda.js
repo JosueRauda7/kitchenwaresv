@@ -72,6 +72,7 @@ const Tienda = (props) => {
               productos.map((producto, id) => (
                 <Item
                   key={id}
+                  id={producto._id}
                   img={
                     producto.img
                       ? `${urlImages}/uploads/productos/${producto.img}`

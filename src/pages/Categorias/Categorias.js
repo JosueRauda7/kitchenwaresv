@@ -71,12 +71,12 @@ const Categorias = (props) => {
         <div className='TiendaContainer'>
           <PageTitle>{categoria.nombre}</PageTitle>
           <div className='itemContainer'>
-            {productos.length === 0 ? (
+            {isLoading ? (
+              <Loading />
+            ) : productos.length === 0 ? (
               <h2 style={{ marginTop: "20px" }}>
                 No se encuentran productos de esta categoria.
               </h2>
-            ) : isLoading ? (
-              <Loading />
             ) : (
               productos.map((producto, id) => (
                 <Item
@@ -86,6 +86,7 @@ const Categorias = (props) => {
                       ? `${urlImages}/uploads/productos/${producto.img}`
                       : NotImg
                   }
+                  id={producto._id}
                   title={producto.nombre}
                   precio={producto.precio}
                   titleButton='Añadir al carrito'

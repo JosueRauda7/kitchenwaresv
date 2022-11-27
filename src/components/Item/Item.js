@@ -1,10 +1,16 @@
 import { Link } from "react-router-dom";
 import Button from "../Button/Button";
+import Loading from "../Loading/Loading";
 import "./Item.css";
 
 const Item = (props) => {
   return (
-    <div className={`Item`}>
+    <Link
+      to={`/tienda${props.category ? "" : "/productos"}/${props.title
+        .toLowerCase()
+        .split(" ")
+        .join("-")}?${props.category ? "categoria" : "producto"}=${props.id}`}
+      className={`Item LinkItem`}>
       <div
         className={`Image ${
           props.category ? "ImageCatalogo" : "ImageProducto"
@@ -37,7 +43,7 @@ const Item = (props) => {
           )}
         </div>
       </div>
-    </div>
+    </Link>
   );
 };
 

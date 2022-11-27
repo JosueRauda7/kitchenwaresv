@@ -47,7 +47,12 @@ body{
 }
 
 .LinkCover{
-  text-decoration: none;
+  text-decoration: none;;
+}
+
+.LinkItem{
+  text-decoration: none;;
+  color: #000;
 }
 
 .LinkCard {

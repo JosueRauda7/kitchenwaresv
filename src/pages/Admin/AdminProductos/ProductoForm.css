@@ -19,3 +19,11 @@
 .FormContainer .Buttons .Button{
   width: 30%;
 }
+
+.Detalle:nth-child(n){
+  margin: 10px;
+}
+
+.Detalle h2{
+  margin: 0 10px;
+}

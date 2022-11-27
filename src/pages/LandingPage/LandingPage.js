@@ -71,6 +71,7 @@ const LandingPage = (props) => {
                     .split(" ")
                     .join("-")}?categoria=${cat._id}`}
                   title={cat.nombre}
+                  id={cat._id}
                   category
                 />
               );

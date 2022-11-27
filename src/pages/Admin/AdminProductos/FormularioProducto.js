@@ -1,10 +1,12 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-
+import AddCircleIcon from "@mui/icons-material/AddCircle";
+import RemoveCircleIcon from "@mui/icons-material/RemoveCircle";
 import { Link, Navigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import withReactContent from "sweetalert2-react-content";
+
 import { baseUrl } from "../../../apiConfig";
 import Button from "../../../components/Button/Button";
 import ErrorMessageBox from "../../../components/ErrorMessageBox/ErrorMessageBox";
@@ -19,6 +21,7 @@ const FormularioProducto = (props) => {
   const [categorias, setCategorias] = useState([]);
   const [nombreProducto, setNombreProducto] = useState("");
   const [descripcionProducto, setDescripcionProducto] = useState("");
+  const [detallesProducto, setDetallesProducto] = useState([]);
   const [precioProducto, setPrecioProducto] = useState(0);
   const [stockProducto, setStockProducto] = useState(0);
   const [categoriaProducto, setCategoriaProducto] = useState("");
@@ -41,6 +44,7 @@ const FormularioProducto = (props) => {
         setProducto(product);
         setNombreProducto(product.nombre);
         setPrecioProducto(product.precio);
+        setDetallesProducto(product.detalles);
         setDescripcionProducto(product.descripcion);
         setStockProducto(product.stock);
         const res2 = await axios.get(
@@ -107,9 +111,48 @@ const FormularioProducto = (props) => {
 
   const handleSetCategoriaProducto = (e) => {
     setErrorImgProducto("");
-    console.log(e.target.value);
     setCategoriaIdProducto(e.target.value);
     setCategoriaProducto(e.target.value);
+  };
+
+  const handleSetVariable = (e, index) => {
+    const detalleProducto = detallesProducto[index];
+
+    const nuevosDetalles = detallesProducto.map((dt) => {
+      if (dt.variable === detalleProducto.variable) {
+        dt.variable = e.target.value;
+      }
+      return dt;
+    });
+
+    setDetallesProducto(nuevosDetalles);
+  };
+
+  const handleSetValor = (e, index) => {
+    const detalleProducto = detallesProducto[index];
+
+    const nuevosDetalles = detallesProducto.map((dt) => {
+      if (dt.variable === detalleProducto.variable) {
+        dt.valor = e.target.value;
+      }
+      return dt;
+    });
+
+    setDetallesProducto(nuevosDetalles);
+  };
+
+  const handleAnidarDetalle = () => {
+    setDetallesProducto([...detallesProducto, { variable: "", valor: "" }]);
+  };
+
+  const handleEliminarDetalle = (index) => {
+    const detalleProducto = detallesProducto[index];
+
+    const nuevosDetalles = detallesProducto.filter(
+      (dt) => dt.variable !== detalleProducto.variable
+    );
+
+    setDetallesProducto(nuevosDetalles);
   };
 
   const handlePressEnter = async (e) => {
@@ -126,6 +169,7 @@ const FormularioProducto = (props) => {
         {
           nombre: nombreProducto,
           descripcion: descripcionProducto,
+          detalles: detallesProducto,
           precio: +precioProducto,
           stock: +stockProducto,
           categoria: categoriaIdProducto,
@@ -167,6 +211,7 @@ const FormularioProducto = (props) => {
         {
           nombre: nombreProducto,
           descripcion: descripcionProducto,
+          detalles: detallesProducto,
           precio: +precioProducto,
           stock: +stockProducto,
           categoria: categoriaIdProducto,
@@ -231,6 +276,49 @@ const FormularioProducto = (props) => {
                 // onKeyDown={handlePressEnter}
                 error={errorImgProducto}
               />
+            </div>
+            <div className='InputContainer'>
+              <h2>*Detalles:</h2>
+              {!detallesProducto ? (
+                <h3>No hay detalles</h3>
+              ) : (
+                detallesProducto.map((detalle, index) => (
+                  <div className='Detalle' key={index}>
+                    <InputText
+                      type='text'
+                      value={detalle.variable}
+                      onChange={(e) => handleSetVariable(e, index)}
+                      justify='center'
+                      error={errorImgProducto}
+                      placeholder='Ej: Color'
+                    />
+                    <h2>:</h2>
+                    <InputText
+                      type='text'
+                      value={detalle.valor}
+                      onChange={(e) => handleSetValor(e, index)}
+                      justify='center'
+                      error={errorImgProducto}
+                      placeholder='Ej: Azul'
+                    />
+                    <div
+                      className='CarritoItemBorrar'
+                      style={{ width: "40px" }}>
+                      <Button
+                        type='danger'
+                        onClick={() => handleEliminarDetalle(index)}>
+                        <RemoveCircleIcon />
+                      </Button>
+                    </div>
+                  </div>
+                ))
+              )}
+              <Button
+                type='primary'
+                icono={<AddCircleIcon fontSize='medium' />}
+                onClick={handleAnidarDetalle}>
+                Agregar Detalle
+              </Button>
             </div>
             <div className='InputContainer'>
               <h2>Precio (USD $):</h2>

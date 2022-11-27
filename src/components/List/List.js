@@ -129,13 +129,13 @@ const List = (props) => {
                     <td>{p.nombre}</td>
                     <td>{p.descripcion}</td>
                     <td>
-                      {!p.detalles
+                      {p.detalles.length === 0
                         ? "No hay detalles"
-                        : Object.keys(p.detalles, index).map((variable) => (
+                        : p.detalles.map((detalle, index) => (
                             <p
                               key={
                                 index
-                              }>{`${variable}: ${p.detalles[variable]}`}</p>
+                              }>{`${detalle.variable}: ${detalle.valor}`}</p>
                           ))}
                     </td>
                     <td>${p.precio.toFixed(2)}</td>

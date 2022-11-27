@@ -9,7 +9,7 @@ import Logo from "../../assets/logo_positivo.png";
 import Button from "../../components/Button/Button";
 import ErrorMessageBox from "../../components/ErrorMessageBox/ErrorMessageBox";
 import { UsuarioContext } from "../../contexts/UsuarioContext";
-import { baseUrl, urlImages } from "../../apiConfig";
+import { baseUrl } from "../../apiConfig";
 
 const Login = (props) => {
   const { isLogged, setIsLogged, setUsuario, setRolUsuario, setImgUsuario } =
@@ -54,6 +54,7 @@ const Login = (props) => {
     setErrorUsername("");
     setErrorEmail("");
     setErrorPassword("");
+    setErrorImgUsuario("");
   };
 
   const handleShowRegistrar = () => {

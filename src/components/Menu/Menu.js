@@ -61,6 +61,9 @@ const Menu = (props) => {
         </Link>
         {!isLogged ? (
           <>
+            <Link to='/login' className='aLink'>
+              <li className='Link'>Iniciar Sesión</li>
+            </Link>
             <Link to='/registrar' className='aLink'>
               <li className='Link'>Regístrarse</li>
             </Link>
