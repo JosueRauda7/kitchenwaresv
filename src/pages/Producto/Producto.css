@@ -64,3 +64,9 @@
   background-color: #EA2027;
   color: #fff;
 }
+
+.BodyProducto .ButtonContainer{
+  width:65%;
+  height: 10vh;
+  display: flex;
+}

@@ -1,0 +1,21 @@
+.UsuarioForm {
+  margin: 4vh 5%;
+}
+
+.FormContainer {
+  width: 50%;
+  margin-top: 3vh;
+  padding: 50px;
+  background-color: #efefef;
+}
+
+.FormContainer .Buttons {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.FormContainer .Buttons .Button {
+  width: 30%;
+}

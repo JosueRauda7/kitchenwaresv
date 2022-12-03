@@ -19,6 +19,9 @@ import AdminProductos from "./pages/Admin/AdminProductos/AdminProductos";
 import FormularioProducto from "./pages/Admin/AdminProductos/FormularioProducto";
 import EditarUsuario from "./pages/Usuario/EditarUsuario";
 import Producto from "./pages/Producto/Producto";
+import AdminUsuarios from "./pages/Admin/AdminUsuarios/AdminUsuarios";
+import WhatsappButton from "./components/WhatsappButton/WhatsappButton";
+import FormularioUsuario from "./pages/Admin/AdminUsuarios/FormularioUsuario";
 
 function App() {
   const [isClicked, setIsClicked] = useState(false);
@@ -84,6 +87,16 @@ function App() {
                 path='/administrar/productos/edit'
                 element={<FormularioProducto />}
               />
+              {/* Usuarios */}
+              <Route path='/administrar/usuarios' element={<AdminUsuarios />} />
+              <Route
+                path='/administrar/usuarios/agregar'
+                element={<FormularioUsuario />}
+              />
+              <Route
+                path='/administrar/usuarios/edit'
+                element={<FormularioUsuario />}
+              />
             </>
           ) : null}
           {isLogged ? <Route path='/profile' element={<Usuario />} /> : null}
@@ -93,6 +106,7 @@ function App() {
           <Route path='*' element={<PageNotFound />} />
         </Routes>
       </div>
+      <WhatsappButton />
     </div>
   );
 }

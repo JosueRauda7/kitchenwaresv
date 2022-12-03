@@ -1,0 +1,11 @@
+.PageButtons {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 2vh auto;
+}
+
+.PageButtons .Button {
+  width: 50px;
+}

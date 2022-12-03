@@ -31,7 +31,9 @@ const List = (props) => {
   const handleAskToDelete = (coleccion) => {
     MySwal.fire({
       title: `¿Deseas eliminar este ${coleccionItem[1]}?`,
-      text: `\"${coleccion.nombre}\" se eliminara completamente.`,
+      text: `\"${
+        props.usuarios ? coleccion.username : coleccion.nombre
+      }\" se eliminara completamente.`,
       icon: "warning",
       showCancelButton: true,
       confirmButtonColor: "#0652DD",
@@ -43,7 +45,9 @@ const List = (props) => {
         await handleDeleteColeccion(coleccion);
         MySwal.fire(
           `¡${coleccionItem[0]} eliminada!`,
-          `${coleccion.nombre} se ha removido.`,
+          `${
+            props.usuarios ? coleccion.username : coleccion.nombre
+          } se ha removido.`,
           "success"
         );
         props.handleEnviado();
@@ -54,9 +58,14 @@ const List = (props) => {
   const handleDeleteColeccion = async (coleccion) => {
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`${baseUrl}/${coleccionItem[2]}/${coleccion._id}`, {
-        headers: { "x-token": token },
-      });
+      await axios.delete(
+        `${baseUrl}/${coleccionItem[2]}/${
+          props.usuarios ? coleccion.uid : coleccion._id
+        }`,
+        {
+          headers: { "x-token": token },
+        }
+      );
     } catch (error) {
       console.log(error);
     }
@@ -165,6 +174,55 @@ const List = (props) => {
                             onClick={() => handleAskToDelete(p)}
                             icono={<DeleteIcon fontSize='medium' />}
                           />
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                );
+              })
+            : null}
+          {props.usuarios && !props.isLoading
+            ? props.usuarios.map((u, index) => {
+                return (
+                  <tr key={index}>
+                    <td className='ImgList'>
+                      <img
+                        src={
+                          u.usuario.img
+                            ? `${urlImages}/uploads/usuarios/${u.usuario.img}`
+                            : NotImg
+                        }
+                        alt={u.usuario.username}
+                      />
+                    </td>
+                    <td>{u.usuario.username}</td>
+                    <td>{u.usuario.correo}</td>
+                    <td>
+                      {u.usuario.rol === "ADMIN_ROL"
+                        ? "Administrador"
+                        : "Usuario"}
+                    </td>
+                    <td>{u.usuario.estado ? "Activo" : "Inhabilitado"}</td>
+                    <td>
+                      <div className='OperacionesList'>
+                        <Link
+                          className='LinkCover LinkCard OperacionLink'
+                          to={`/administrar/usuarios/edit?usuario=${u.usuario.uid}`}>
+                          <Button
+                            type='primary'
+                            onlyIcon
+                            icono={<EditIcon fontSize='medium' />}
+                          />
+                        </Link>
+                        <div>
+                          {u.usuario.uid !== props.myIdUser && (
+                            <Button
+                              type='danger'
+                              onlyIcon
+                              onClick={() => handleAskToDelete(u.usuario)}
+                              icono={<DeleteIcon fontSize='medium' />}
+                            />
+                          )}
                         </div>
                       </div>
                     </td>

@@ -11,6 +11,9 @@ import Button from "../../components/Button/Button";
 import { CarritoContext } from "../../contexts/CarritoContext";
 import withReactContent from "sweetalert2-react-content";
 import Swal from "sweetalert2";
+import ShoppingCartIcon from "@mui/icons-material/ShoppingCart";
+import ShoppingBagIcon from "@mui/icons-material/ShoppingBag";
+
 import Footer from "../../components/Footer/Footer";
 
 const Producto = (props) => {
@@ -113,7 +116,7 @@ const Producto = (props) => {
                   </div>
                   <div className='CatacteristicaItem'>
                     <h2>Detalles</h2>
-                    {producto.detalles ? (
+                    {!producto.detalles ? (
                       <p>No hay detalles</p>
                     ) : (
                       producto.detalles.map((detalle, index) => (
@@ -153,11 +156,20 @@ const Producto = (props) => {
                       </Button>
                     </div>
                   </div>
-                  <Button
-                    type='primary'
-                    onClick={() => handleAnidarCarrito(producto)}>
-                    Añadir al carrito
-                  </Button>
+                  <div className='ButtonContainer'>
+                    <Button
+                      type='primary'
+                      icono={<ShoppingCartIcon />}
+                      onClick={() => handleAnidarCarrito(producto)}>
+                      Añadir al carrito
+                    </Button>
+                    <Button
+                      type='secondary'
+                      icono={<ShoppingBagIcon />}
+                      onClick={() => handleAnidarCarrito(producto)}>
+                      Comprar producto
+                    </Button>
+                  </div>
                 </div>
               </>
             )}

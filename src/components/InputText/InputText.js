@@ -31,19 +31,32 @@ const InputText = (props) => {
   if (props.type === "select") {
     inputText = (
       <div className='InputSelect'>
-        <select
-          placeholder={props.placeholder}
-          onChange={props.onChange}
-          className={`${props.justify}`}>
-          {props.lista.map((op) => (
-            <option
-              key={op._id}
-              value={op._id}
-              selected={op._id === props.selected}>
-              {op.nombre}
-            </option>
-          ))}
-        </select>
+        {props.onlyTextValues ? (
+          <select
+            placeholder={props.placeholder}
+            onChange={props.onChange}
+            className={`${props.justify}`}>
+            {props.lista.map((op, index) => (
+              <option key={index} value={op} selected={op === props.selected}>
+                {op}
+              </option>
+            ))}
+          </select>
+        ) : (
+          <select
+            placeholder={props.placeholder}
+            onChange={props.onChange}
+            className={`${props.justify}`}>
+            {props.lista.map((op) => (
+              <option
+                key={op._id}
+                value={op._id}
+                selected={op._id === props.selected}>
+                {op.nombre}
+              </option>
+            ))}
+          </select>
+        )}
       </div>
     );
   }
