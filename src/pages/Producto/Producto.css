@@ -17,6 +17,10 @@
   width: auto;
 }
 
+.ProductoInfo{
+  width: 60%;
+}
+
 .BodyProducto{
   padding-left: 30px;
 }
@@ -65,8 +69,13 @@
   color: #fff;
 }
 
+.BodyProducto .CategoriaProducto{
+  color: #949494;
+  margin-top: 10px;
+}
+
 .BodyProducto .ButtonContainer{
-  width:65%;
+  width:70%;
   height: 10vh;
   display: flex;
 }

@@ -29,9 +29,10 @@ const AdminProductos = (props) => {
     const totalProductos = res.data.body.totalProductos;
     const paginasTotal = Math.ceil(totalProductos / limit);
     let pages = [];
+    console.log(paginasTotal);
     let i =
       pag === 1
-        ? pag
+        ? 1
         : pag === 2
         ? pag - 1
         : pag === paginasTotal - 1
@@ -41,7 +42,9 @@ const AdminProductos = (props) => {
         : pag - 2;
     let limite =
       paginasTotal === 1
-        ? 1
+        ? paginasTotal
+        : paginasTotal < 5
+        ? paginasTotal
         : pag === 1
         ? pag + 4
         : pag === 2
@@ -52,35 +55,41 @@ const AdminProductos = (props) => {
         ? paginasTotal
         : pag + 2;
     // for (let i = 1; i <= paginasTotal; i++) {
-    console.log(`i = ${i}`, `| limite = ${limite}`);
+    console.log(i, limite);
     for (i; i <= limite; i++) {
+      if (i <= 0) {
+        continue;
+      }
       if (i === 1) {
         pages.push(1);
-        break;
+        continue;
       }
       pages.push(i);
     }
+
     setPaginas(pages);
     setTotalPaginas(paginasTotal);
     setPage(pag);
     setProductos(prods);
   };
 
+  const cargarCategorias = async () => {
+    const res3 = await axios.get(`${baseUrl}/categorias`);
+    const categories = await res3.data.body.categorias;
+    setCategorias(categories);
+    setIsLoading(false);
+  };
+
   useEffect(() => {
     setIsLoading(true);
     getProductos();
-    const cargarCategorias = async () => {
-      const res3 = await axios.get(`${baseUrl}/categorias`);
-      const categories = await res3.data.body.categorias;
-      setCategorias(categories);
-      setIsLoading(false);
-    };
     cargarCategorias();
   }, []);
 
   const handleChangePage = async (pagIndex) => {
     setIsLoading(true);
     getProductos(pagIndex);
+    cargarCategorias();
   };
 
   const handleEnviado = () => {

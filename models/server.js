@@ -14,7 +14,7 @@ class Server {
 
   middlewares() {
     // Directorio público
-    this.app.use(express.static("build"));
+    this.app.use("*", express.static("build"));
   }
 
   // routes() {}

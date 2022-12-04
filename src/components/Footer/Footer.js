@@ -30,7 +30,9 @@ const Footer = (props) => {
           <img src={FacebookLogo} />
           <h3>kitchenwaresv</h3>
         </a>
-        <a href='https://wa.me/50379896771' className='LinkButton SocialMedia'>
+        <a
+          href='https://wa.me/50379896771?text=Me%20gustaría%20saber%20el%20precio%20de%20un%20producto'
+          className='LinkButton SocialMedia'>
           <img src={WhatsappLogo} />
           <h3>7989-6771</h3>
         </a>

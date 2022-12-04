@@ -102,14 +102,16 @@ const Producto = (props) => {
               alt={producto.nombre}
             />
           </div>
-          <div>
+          <div className='ProductoInfo'>
             {isLoading ? (
               <Loading />
             ) : (
               <>
                 <PageTitle>{producto.nombre}</PageTitle>
                 <div className='BodyProducto'>
-                  <h2>{categoria.nombre}</h2>
+                  <h2 className='CategoriaProducto'>
+                    Categoria: {categoria.nombre}
+                  </h2>
                   <div className='CatacteristicaItem'>
                     <h2>Descripción de producto</h2>
                     <p>{producto.descripcion}</p>

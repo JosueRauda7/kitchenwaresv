@@ -39,7 +39,7 @@ const AdminUsuarios = (props) => {
       let pages = [];
       let i =
         pag === 1
-          ? pag
+          ? 1
           : pag === 2
           ? pag - 1
           : pag === paginasTotal - 1
@@ -49,7 +49,9 @@ const AdminUsuarios = (props) => {
           : pag - 2;
       let limite =
         paginasTotal === 1
-          ? 1
+          ? paginasTotal
+          : paginasTotal < 5
+          ? paginasTotal
           : pag === 1
           ? pag + 4
           : pag === 2
@@ -61,6 +63,13 @@ const AdminUsuarios = (props) => {
           : pag + 2;
       // for (let i = 1; i <= paginasTotal; i++) {
       for (i; i <= limite; i++) {
+        if (i <= 0) {
+          continue;
+        }
+        if (i === 1) {
+          pages.push(1);
+          continue;
+        }
         pages.push(i);
       }
       setPaginas(pages);
@@ -69,7 +78,7 @@ const AdminUsuarios = (props) => {
       setIsLoading(false);
     } catch (error) {
       console.log(error);
-      setIsLoading(true);
+      // setIsLoading(true);
     }
   };
 
@@ -122,17 +131,6 @@ const AdminUsuarios = (props) => {
               paginas={paginas}
               handleChangePage={handleChangePage}
             />
-            {/* {!isLoading && totalPaginas > 0 && (
-              <div className='PageButtons'>
-                {paginas.map((numPage) => (
-                  <Button
-                    type='primary'
-                    onClick={() => handleChangePage(numPage)}>
-                    {numPage}
-                  </Button>
-                ))}
-              </div>
-            )} */}
           </div>
         </div>
       </div>

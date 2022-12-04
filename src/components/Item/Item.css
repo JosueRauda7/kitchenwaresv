@@ -10,6 +10,7 @@
   flex-flow: column;
   justify-content: space-between;
   cursor: pointer;
+  margin-top: 20px;
   /* border-radius: 10px; */
   /* padding: 15px; */
 }
@@ -26,8 +27,18 @@
   height: 40vh;
 }
 
-ImageCatalogo{
-  height: 30vh;
+.ImageProducto img{
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.ImageCatalogo img{
+  object-fit: cover;
+  aspect-ratio: 0.8;
+}
+
+.ImageCatalogo{
+  height: 40vh;
 }
 
 .Item .Header{
