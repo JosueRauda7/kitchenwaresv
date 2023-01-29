@@ -1,0 +1,13 @@
+user.name=JosueRauda7
+user.email=katerozarack@gmail.com
+core.repositoryformatversion=0
+core.filemode=false
+core.bare=false
+core.logallrefupdates=true
+core.ignorecase=true
+remote.origin.url=https://github.com/JosueRauda7/kitchenwaresv.git
+remote.origin.fetch=+refs/heads/*:refs/remotes/origin/*
+branch.main.remote=origin
+branch.main.merge=refs/heads/main
+branch.development.remote=origin
+branch.development.merge=refs/heads/development
