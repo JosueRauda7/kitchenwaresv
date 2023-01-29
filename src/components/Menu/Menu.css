@@ -70,3 +70,49 @@ li{
   display: flex;
   align-items: center;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  .MenuIcon {
+    color: #fff;
+  }
+  
+    .Logo {
+      height: 5vh;
+      padding: 0px;
+    }
+  
+    /* SUBMENU */
+    .SubMenu {
+      position: absolute;
+      top: 12vh;
+      right: 10px;
+      z-index: 999;
+      background-image: linear-gradient(to top right, #003DD4, #29ABE2);
+      width: 300px;
+    }
+  
+    .SubMenuContainer {
+      width: 100%;
+    }
+  
+    .SubMenuContainer .Link {
+      display: block;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: white;
+      padding: 10px 10px;
+    }
+  
+    .SubMenuContainer .UserOption {
+      display: flex;
+      align-items: center;
+    }
+}
+
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (max-width: 600px) {}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (max-width: 768px) {}

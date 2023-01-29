@@ -134,3 +134,15 @@
   margin: auto;
   width: 40%;
 }
+
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}

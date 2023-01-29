@@ -12,3 +12,37 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+.Desktop {
+  display: block;
+}
+.Movil {
+  display: none;
+}
+
+@media only screen and (max-width: 600px) {
+  .Desktop {
+    display: none;
+  }
+  .Movil {
+    display: block;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .Desktop {
+      display: none;
+    }
+    .Movil {
+      display: block;
+    }
+}
+
+@media only screen and (max-width: 768px) {
+  .Desktop {
+      display: none;
+    }
+    .Movil {
+      display: block;
+    }
+}
